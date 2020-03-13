@@ -1,3 +1,6 @@
+# Mine
+*.git-fake/
+
 # Hexo
 .DS_Store
 Thumbs.db
