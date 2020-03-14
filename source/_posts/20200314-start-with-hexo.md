@@ -2,13 +2,13 @@
 title: Start with Hexo
 date: 2020-03-14 00:18:51
 categories: 
-    - [Web, Frontend]
-    - [Blog]
+- [Web, Frontend]
+- [Blog]
 tags: 
-    - Hexo
-    - Github
-    - Github Pages
-    - Web
+- Hexo
+- Github
+- Github Pages
+- Web
 ---
 # 一切的结束，一切的开始
 
@@ -45,7 +45,9 @@ tags:
 - savepoint
 - ruin
 
-这下可好，已经把未来数次的博客搬迁取名事宜考虑好了，以后可以尽情搬迁新博客而不用担心二级域不够用了。
+这下可好，已经把未来数次的博客搬迁取名事宜考虑好了，以后可以尽情搬迁新博客而不用担心二级域不够用。
+
+<!-- more -->
 
 ## 关于新博客取名
 
