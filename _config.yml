@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Wasteland of Touko
-subtitle: ''
+title: Wasteland
+subtitle: 'being explored by Touko'
 description: ''
 keywords:
 author: Touko Hoshino
 language: en
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -32,7 +32,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :year:month:day-:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
@@ -41,14 +41,14 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
   enable: true
   line_number: true
   auto_detect: false
-  tab_replace: ''
+  tab_replace: '    '
   wrap: true
   hljs: false
 
@@ -105,5 +105,5 @@ deploy:
 # Add link
 # https://github.com/acwong00/hexo-addlink
 addlink:
-  before_text: '--- <br/>License: [BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) <br/>Link: '
-  after_text: '<br/>Written with Passion and Hope'
+  before_text: '------------ <br/>License: [BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) <br/>Link: '
+  after_text: '<br/>Written with **Passion** and **Hope**'

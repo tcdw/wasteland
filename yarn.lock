@@ -1000,6 +1000,11 @@ hexo-renderer-marked@^2.0.0:
     marked "^0.7.0"
     strip-indent "^3.0.0"
 
+hexo-renderer-njks@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/hexo-renderer-njks/download/hexo-renderer-njks-1.0.0.tgz#6d2d6b23ff34928160f103fbe546b42c55470528"
+  integrity sha1-bS1rI/80koFg8QP75Ua0LFVHBSg=
+
 hexo-renderer-stylus@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/hexo-renderer-stylus/download/hexo-renderer-stylus-1.1.0.tgz#7a0a107bcf4b74fdf88f28da2db47b8dc9e208e5"
