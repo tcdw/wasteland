@@ -31,7 +31,7 @@ KodExplorer Github: https://github.com/kalcaddle/KodExplorer
 
 官网对文件安装的文档说明已经非常详细了，这边简单摘抄一些，并分享在安装过程中发现的问题并提供解决方案。
 
-全平台（除了 iOS）的安装文件可以在这里找到 https://syncthing.net/downloads/。
+全平台（除了 iOS）的安装文件可以在这里找到 https://syncthing.net/downloads/ 。
 
 ## Deb 系
 

@@ -3,7 +3,7 @@ title: Start with Hexo
 date: 2020-03-14 00:18:51
 categories: 
 - [Web, Frontend]
-- [Blog]
+- Blog
 tags: 
 - Hexo
 - Github
