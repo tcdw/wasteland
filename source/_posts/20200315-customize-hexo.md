@@ -27,100 +27,16 @@ mxd 2020-03-12 18:12:17
     我喜欢hexo
 ```
 
-昨天我装上了 *Hexo* ，配置了 *gh-pages* ，今天我装了一堆插件用于优化浏览体验，并把主题改成了自己喜欢的样子。我会在这个帖子里做一些记录，关于我修改了什么。
+昨天我装上了 `Hexo` ，配置了 `gh-pages` ，今天我装了一堆插件用于优化浏览体验，并把主题改成了自己喜欢的样子。我还增加了 `gitalk` 评论系统，并接入了 `Google Analytics` 服务等传统艺能。
 
-# 插件
+我会在这个帖子里做一些记录，关于我修改的比较重要的部分。
 
-## 搜索按钮 hexo-generator-searchdb
 
-GitHub: https://github.com/theme-next/hexo-generator-searchdb  
+# 修改 Hexo 字体
 
-### Install
+我修改了 `Hexo` 全局的字体，并根据自己的审美修改了字体大小和排版。修改字体需要重写 CSS ，覆盖 `NexT` 原有的样式表。
 
-```bash
-$ yarn add hexo-generator-searchdb
-```
-
-### Configure
-
-```yaml
-search:
-  path: search.xml
-  field: post
-  content: true
-  format: html
-```
-
-### Update
-
-```bash
-$ yarn upgrade hexo-generator-searchdb
-```
-
-## SPA 插件 PJAX for NexT
-
-GitHub: https://github.com/theme-next/theme-next-pjax  
-
-在用户点击网页内链接时，通过 AJAX 的方式拉取新页面并渲染，达到 SPA (Single Page Application) 的效果。
-
-### Install
-
-```bash
-$ cd themes/next
-$ git clone https://github.com/theme-next/theme-next-pjax source/lib/pjax
-```
-
-### Configure
-
-```yaml
-pjax: true
-```
-
-### Update
-
-```bash
-$ cd themes/next/source/lib/pjax
-$ git pull
-```
-
-## 网页加载进度条 Progress bar for NexT
-
-GitHub: https://github.com/theme-next/theme-next-pace  
-
-这个插件可以在页面元素加载的时候给页面增加一个进度条提示。
-
-### Install
-
-```bash
-$ cd themes/next
-$ git clone https://github.com/theme-next/theme-next-pace source/lib/pace
-```
-
-### Configure
-
-在 NexT 配置文件中启用该模块
-
-```yaml
-pace:
-  enable: true
-  # Themes list:
-  # big-counter | bounce | barber-shop | center-atom | center-circle | center-radar | center-simple
-  # corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal
-  theme: minimal
-```
-
-### Update
-
-```bash
-$ cd themes/next/source/lib/pace
-$ git pull
-```
-
-# 魔改
-
-我对 Hexo 的魔改主要是修改了全局的字体，并根据自己的审美修改了大小和一些排版。修改字体需要重写 CSS ，覆盖 *NexT* 原有的样式表。
-
-在 *NexT* 的配置文件中找到如下片段
+在 `NexT` 的配置文件中找到如下片段
 
 ```yaml
 # Define custom file paths.
@@ -164,7 +80,7 @@ body {
 
 # 评论
 
-*NexT* 提供了非常方便的评论接口，只需要申请对应的评论服务并把他们的 `API Key` 或者别的相关的东西复制过来就可以了。我这里主要记录一下 *gitalk* 的安装过程。
+`NexT` 提供了非常方便的评论接口，只需要申请对应的评论服务并把他们的 `API Key` 或者别的相关的东西复制过来就可以了。我这里主要记录一下 `gitalk` 的安装过程。
 
 ## Gitalk
 
@@ -172,7 +88,9 @@ body {
 
 首先我们需要创建一个 repo ，用于放所有的 issue （评论）。我创建了一个名为 `gitalk-wasteland` 的 repo 。然后我们什么都不用操作，进行下一步。
 
-进入 `GitHub OAuth App` 申请页面 https://github.com/settings/applications/new ，创建一个新的 `OAuth App` 并设置 **网站首页 URL** 为 *Homepage URL* 和 *Authorization callback URL* 。然后根据配置文件注释，将 *Client ID* ， *Client Secret* *gitalk-wasteland* 等信息填入
+进入 `GitHub OAuth App` 申请页面 https://github.com/settings/applications/new ，创建一个新的 `OAuth App` 并设置 *Homepage URL* 和 *Authorization callback URL* 为 **网站首页 URL** 。然后根据配置文件注释，将 *Client ID* ， *Client Secret* *gitalk-wasteland(repo name)* 等信息填入
+
+<!--more-->
 
 ```yaml
 gitalk:
@@ -193,6 +111,93 @@ comments:
   # Available values: changyan | disqus | disqusjs | gitalk | livere | valine
   active: gitalk
   ...
+```
+
+# 插件
+
+## 搜索按钮 hexo-generator-searchdb
+
+GitHub: https://github.com/theme-next/hexo-generator-searchdb  
+
+### Install
+
+```bash
+$ yarn add hexo-generator-searchdb
+```
+
+### Configure
+
+```yaml
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
+```
+
+### Update
+
+```bash
+$ yarn upgrade hexo-generator-searchdb
+```
+
+## SPA 插件 PJAX for NexT
+
+GitHub: https://github.com/theme-next/theme-next-pjax  
+
+在用户点击网页内链接时，通过 `AJAX` 的方式拉取新页面并渲染，达到 `SPA (Single Page Application)` 的效果。
+
+### Install
+
+```bash
+$ cd themes/next
+$ git clone https://github.com/theme-next/theme-next-pjax source/lib/pjax
+```
+
+### Configure
+
+```yaml
+pjax: true
+```
+
+### Update
+
+```bash
+$ cd themes/next/source/lib/pjax
+$ git pull
+```
+
+## 网页加载进度条 Progress bar for NexT
+
+GitHub: https://github.com/theme-next/theme-next-pace  
+
+这个插件可以在页面元素加载的时候给页面增加一个进度条提示。
+
+### Install
+
+```bash
+$ cd themes/next
+$ git clone https://github.com/theme-next/theme-next-pace source/lib/pace
+```
+
+### Configure
+
+在 `NexT` 配置文件中启用该模块
+
+```yaml
+pace:
+  enable: true
+  # Themes list:
+  # big-counter | bounce | barber-shop | center-atom | center-circle | center-radar | center-simple
+  # corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal
+  theme: minimal
+```
+
+### Update
+
+```bash
+$ cd themes/next/source/lib/pace
+$ git pull
 ```
 
 # 最后废话两句

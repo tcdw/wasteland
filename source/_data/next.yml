@@ -194,6 +194,7 @@ social:
   #YouTube: https://youtube.com/yourname || youtube
   #Instagram: https://instagram.com/yourname || instagram
   #Skype: skype:yourname?call|chat || skype
+  Popi: https://www.popiask.cn/touko_h || question
 
 social_icons:
   enable: true
