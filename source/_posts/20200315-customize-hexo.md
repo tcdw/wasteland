@@ -218,13 +218,13 @@ $ git pull
 
 这其中也包括对网站增加插件。举个例子，对于插件 `theme-next-pjax` ， `README.md` 中写的是将插件下载到 `next/source/lib` 下，但我的建议是用 `git submodule add` ，将其作为一整个包插入，也方便以后升级维护。
 
-同样的，我也建议用这种方式增加主题。
+同样，我也建议用这种方式下载主题。
 
 ```bash
 $ git submodule add https://github.com/theme-next/hexo-theme-next themes/next
 ```
 
-以上这么做还会遇上一个问题
+以上这么做可能会遇上一个问题
 
 ```
 YAMLException: end of the stream or a document separator is expected at line 9, column 102:
@@ -234,16 +234,14 @@ YAMLException: end of the stream or a document separator is expected at line 9, 
     ...
 ```
 
-遇上这种问题，应该检查含有 `languages and other directories:` 的文件中。全局搜索相关关键词即可。如果是其他关键词，也是一样的道理。
+遇上这种问题，全局搜索含有 `languages and other directories:` 的文件。如果是其他关键词，也是一样的道理。
 
-经检查，之前添加的 `submodule` 中 `README.md` 存在非法（不符合 YAML 语法检查器）的内容。我推测是执行相关命令时， `Hexo` 会对 `source/` 下的所有特定后缀文件进行语法检查，这是很奇怪且不必要的。
+经检查，之前添加的 `submodule` 中 `README.md` 存在非法（不符合 YAML 语法检查器）的内容。我推测是执行相关命令时， `Hexo` 会对 `source/` 下的所有特定后缀文件进行语法检查。添加以下配置跳过这些文件就可以解决这个问题了。
 
 ```yaml
 exclude: 
     - lib/**/*.md
 ```
-
-避免奇怪的 `YAMLException:...` 报错。
 
 # References
 
