@@ -154,6 +154,12 @@ $ cd themes/next
 $ git clone https://github.com/theme-next/theme-next-pjax source/lib/pjax
 ```
 
+But I recommend this
+
+```bash
+$ git submodule add https://github.com/theme-next/theme-next-pjax source/lib/pjax
+```
+
 ### Configure
 
 ```yaml
@@ -180,6 +186,12 @@ $ cd themes/next
 $ git clone https://github.com/theme-next/theme-next-pace source/lib/pace
 ```
 
+I recommend this as well
+
+```bash
+$ git submodule add https://github.com/theme-next/theme-next-pace source/lib/pace
+```
+
 ### Configure
 
 在 `NexT` 配置文件中启用该模块
@@ -203,6 +215,14 @@ $ git pull
 # 最后废话两句
 
 网上很多教程会让你直接修改主题内的文件。这不是不行，但是主题作者已经尽量将配置文件暴露，便于主题升级。比如只要把 `NexT` 的配置文件放置在 `source/_data/next.yml` 下即可。对于自己增加的 `CSS` 、 `JS` 等文件，也可以放在 `NexT` 配置文件中提到的对应位置，这对今后的升级和维护有很大帮助。
+
+这其中也包括对网站增加插件。举个例子，对于插件 `theme-next-pjax` ， `README.md` 中写的是将插件下载到 `next/source/lib` 下，但我的建议是用 `git submodule add` ，将其作为一整个包插入，也方便以后升级维护。
+
+同样的，我也建议用这种方式增加主题。
+
+```bash
+$ git submodule add https://github.com/theme-next/hexo-theme-next themes/next
+```
 
 # References
 
