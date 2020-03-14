@@ -2,14 +2,13 @@
 title: Start with Hexo
 date: 2020-03-14 00:18:51
 categories: 
-- Frontend
-- Blog
-- Web
+    - [Web, Frontend]
+    - [Blog]
 tags: 
-- Hexo
-- Github
-- Github Pages
-- Web
+    - Hexo
+    - Github
+    - Github Pages
+    - Web
 ---
 # 一切的结束，一切的开始
 

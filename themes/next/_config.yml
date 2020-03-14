@@ -126,7 +126,7 @@ menu:
   Home: / || home
   #about: /about/ || user
   Posts: /blog/ || archive
-  #tags: /tags/ || tags
+  Tags: /tags/ || tags
   Categories: /categories/ || th
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
@@ -580,18 +580,18 @@ comments:
   style: tabs
   # Choose a comment system to be displayed by default.
   # Available values: changyan | disqus | disqusjs | gitalk | livere | valine
-  active: disqus
+  active: gitalk
   # Setting `true` means remembering the comment system selected by the visitor.
   storage: true
   # Lazyload all comment systems.
   lazyload: true
   # Modify texts or order for any navs, here are some examples.
   nav:
-    #disqus:
+    gitalk:
+      order: 0
+    disqus:
     #  text: Load Disqus
-    #  order: -1
-    #gitalk:
-    #  order: -2
+      order: 1
 
 # Disqus
 disqus:
@@ -649,7 +649,7 @@ livere_uid: # MTAyMC80OTA5NS8yNTU5MA== # <your_uid>
 gitalk:
   enable: true
   github_id: HoshinoTouko # GitHub repo owner
-  repo: wasteland # Repository name to store issues
+  repo: gitalk-wasteland # Repository name to store issues
   client_id: 6e3b778b69268ae5e923 # GitHub Application Client ID
   client_secret: 9025af071807d6ff552d25ed4be80b1af08b9a8c # GitHub Application Client Secret
   admin_user: HoshinoTouko # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
@@ -684,7 +684,7 @@ add_this_id:
 
 # Google Analytics
 google_analytics:
-  tracking_id: # <app_id>
+  tracking_id: UA-68278825-5 # <app_id>
   # By default, NexT will load an external gtag.js script on your site.
   # If you only need the pageview feature, set the following option to true to get a better performance.
   only_pageview: false
@@ -752,7 +752,7 @@ algolia_search:
 # Local Search
 # Dependencies: https://github.com/theme-next/hexo-generator-searchdb
 local_search:
-  enable: false
+  enable: true
   # If auto, trigger search by changing input.
   # If manual, trigger search by pressing enter key or search button.
   trigger: auto
@@ -857,11 +857,11 @@ motion:
 # Dependencies: https://github.com/theme-next/theme-next-pace
 # For more information: https://github.com/HubSpot/pace
 pace:
-  enable: false
+  enable: true
   # Themes list:
   # big-counter | bounce | barber-shop | center-atom | center-circle | center-radar | center-simple
   # corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal
-  theme: minimal
+  theme: center-simple
 
 # JavaScript 3D library.
 # Dependencies: https://github.com/theme-next/theme-next-three
