@@ -6,7 +6,7 @@
 title: Wasteland
 subtitle: 'being explored by Touko'
 description: ''
-keywords:
+keywords: ''
 author: Touko Hoshino
 language: en
 timezone: 'Asia/Shanghai'
@@ -29,7 +29,7 @@ archive_dir: blog
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: 
 
 # Writing
 new_post_name: :year:month:day-:title.md # File name of new posts
@@ -87,8 +87,9 @@ pagination_dir: page
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
 include:
-exclude:
-ignore:
+exclude: 
+    - lib/**/*.md
+ignore: 
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/

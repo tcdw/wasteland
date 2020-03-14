@@ -224,6 +224,27 @@ $ git pull
 $ git submodule add https://github.com/theme-next/hexo-theme-next themes/next
 ```
 
+以上这么做还会遇上一个问题
+
+```
+YAMLException: end of the stream or a document separator is expected at line 9, column 102:
+     ... languages` and other directories:
+                                         ^
+    at generateError (C:\Projects\Website\wasteland\node_modules\js-yaml\lib\js-yaml\loader.js:167:10)
+    ...
+```
+
+遇上这种问题，应该检查含有 `languages and other directories:` 的文件中。全局搜索相关关键词即可。如果是其他关键词，也是一样的道理。
+
+经检查，之前添加的 `submodule` 中 `README.md` 存在非法（不符合 YAML 语法检查器）的内容。我推测是执行相关命令时， `Hexo` 会对 `source/` 下的所有特定后缀文件进行语法检查，这是很奇怪且不必要的。
+
+```yaml
+exclude: 
+    - lib/**/*.md
+```
+
+避免奇怪的 `YAMLException:...` 报错。
+
 # References
 
 - 关于@font-face加载前空白(FOIT)的解决方案 - https://juejin.im/post/5a7587d4f265da4e8a31c213  
