@@ -4,6 +4,7 @@ date: 2020-03-14 00:18:51
 categories: 
 - [Web, Frontend]
 - Blog
+- Talk
 tags: 
 - Hexo
 - Github
@@ -70,14 +71,14 @@ POJO: "teenage wasteland" 。
 旧博客我用的是运行于 *PHP* 的 *Typecho* ，甚至一度还是 0.9 版本，三年前的某天终于找了机会升级到了 1.0。我把整站数据库打包，PHP文件打包，装在了新的网站上。  
 旧网站使用的是 *PHP 5.6 + Apache 2.4 + MySQL 5.6* 的组合，新网站已经全站切换至 *PHP 7.3 + NginX 1.17 + MySQL 5.6* 的组合。目前看来，*NginX* 用起来更顺手，并且资源消耗相比前一套系统要少一些。  
 
-当然，在部署过程中遇上了数据库问题。更新 *MySQL* 账号密码后，页面仍然提示 `Database Server Error`，查看访问日志发现报错为 `PHP message: Adapter Typecho_Db_Adapter_Mysql is not available`。经排查，发现是由于 *Typecho* 默认使用的 *MySQL* 适配器 `Mysql` 在 *PHP 7* 环境下已经不再使用，只需要将 `config.inc.php` 文件进行如下修改，改为使用 `Pdo_Mysql` 进行数据库连接操作。
+意料之内，在部署过程中遇上了数据库问题。更新 *MySQL* 账号密码后，页面仍然提示 `Database Server Error`，查看访问日志发现报错为 `PHP message: Adapter Typecho_Db_Adapter_Mysql is not available`。经排查，发现是由于 *Typecho* 默认使用的 *MySQL* 适配器 `Mysql` 在 *PHP 7* 环境下已经不再使用，只需要将 `config.inc.php` 文件进行如下修改，改为使用 `Pdo_Mysql` 进行数据库连接操作。
 
 ```php
 // $db = new Typecho_db("Mysql","typecho_");
 $db = new Typecho_db("Pdo_Mysql","typecho_");
 ```
 
-然后还要对 *Typecho* 的伪静态进行迁移。由于前期我使用的是 *Apache*，现在使用 *NginX*，配置文件工作方式有一定变化。
+还要对 *Typecho* 的伪静态进行迁移。由于前期我使用的是 *Apache*，现在使用 *NginX*，配置文件工作方式有一定变化。
 
 ```apache
 <IfModule mod_rewrite.c>
@@ -128,7 +129,7 @@ rewrite ^/(category|blog|author|links|aboutme|archives|usr)(.*) http://savepoint
 
 ### Github Pages 反向代理
 
-我偷懒使用 *Jekyll* 建立了我的 Under Construction 页面。因为需要转发旧博客的访问，希望使用我的 *NginX* 处理所有来自 https://touko.moe/ 的请求，而不是 CNAME。在设置 Github Pages 反向代理时，需要使用假的 header 欺骗 Github 服务器，避免被多次重定向。
+我偷懒使用 *Jekyll* 建立了我的 Under Construction 页面。因为需要转发旧博客的访问，希望使用我的 *NginX* 处理所有来自 https://touko.moe/ 的请求，而不是 CNAME。在设置 Github Pages 反向代理时，需要使用假的 header 欺骗 Github 服务器，避免 404 和被多次重定向。
 
 ```nginx
 location / {

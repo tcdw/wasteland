@@ -598,7 +598,7 @@ comments:
 disqus:
   enable: true
   shortname: wasteland-by-touko
-  count: true
+  count: false
   #post_meta_order: 0
 
 # DisqusJS

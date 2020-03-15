@@ -214,6 +214,8 @@ $ git pull
 
 ## Sitemap hexo-generator-sitemap
 
+GitHub: https://github.com/hexojs/hexo-generator-sitemap  
+
 ### Install 
 
 ```bash
