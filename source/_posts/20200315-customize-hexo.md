@@ -212,19 +212,70 @@ $ cd themes/next/source/lib/pace
 $ git pull
 ```
 
+## Sitemap hexo-generator-sitemap
+
+### Install 
+
+```bash
+$ yarn add hexo-generator-sitemap
+```
+
+### Configure
+
+添加设置
+
+```yaml
+sitemap:
+  path: sitemap.xml
+  template: ./path/to/sitemap_template.xml
+  rel: false
+```
+
+添加 Sitemap 模板文件于你喜欢的位置
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% for post in posts %}
+  <url>
+    <loc>{{ post.permalink | uriencode }}</loc>
+    {% if post.updated %}
+    <lastmod>{{ post.updated.toISOString() }}</lastmod>
+    {% elif post.date %}
+    <lastmod>{{ post.date.toISOString() }}</lastmod>
+    {% endif %}
+  </url>
+  {% endfor %}
+</urlset>
+```
+
+对于不想被 Sitemap 包含的文件，可以在头部写入 `sitemap: false` 。
+
+### Update
+
+```bash
+$ yarn upgrade hexo-generator-sitemap
+```
+
 # 最后废话两句
 
-网上很多教程会让你直接修改主题内的文件。这不是不行，但是主题作者已经尽量将配置文件暴露，便于主题升级。比如只要把 `NexT` 的配置文件放置在 `source/_data/next.yml` 下即可。对于自己增加的 `CSS` 、 `JS` 等文件，也可以放在 `NexT` 配置文件中提到的对应位置，这对今后的升级和维护有很大帮助。
+网上很多教程会让你直接修改主题内的文件。这不是不行，但是主题作者已经尽量将配置文件暴露，便于主题升级。
 
 这其中也包括对网站增加插件。举个例子，对于插件 `theme-next-pjax` ， `README.md` 中写的是将插件下载到 `next/source/lib` 下，但我的建议是用 `git submodule add` ，将其作为一整个包插入，也方便以后升级维护。
 
-同样，我也建议用这种方式下载主题。
+## NexT 主题解耦合
+
+可以把 `NexT` 的配置文件放置在 `source/_data/next.yml` 下，然后修改该配置文件 `override: true` 即可将设置完全覆盖。对于自己增加的 `CSS` 、 `JS` 等文件，也可以放在 `NexT` 配置文件中提到的对应位置，这对今后的升级和维护有很大帮助。
+
+如果已经在使用 NexT 主题，确保主题文件夹的修改都备份好的情况下，执行 `git rm themes/next` ，从 git 中删除并保留主题原文件。然后执行
 
 ```bash
 $ git submodule add https://github.com/theme-next/hexo-theme-next themes/next
 ```
 
-以上这么做可能会遇上一个问题
+通过增加 submodule 的方式增加主题，并且今后不要再对 `themes/next` 文件夹下的文件做任何修改，否则可能产生一个 `dirty commit` 。
+
+我在通过 `submodule add` 增加 `PJAX, pace` 的时候遇上了下面这个问题
 
 ```
 YAMLException: end of the stream or a document separator is expected at line 9, column 102:
@@ -234,9 +285,9 @@ YAMLException: end of the stream or a document separator is expected at line 9, 
     ...
 ```
 
-遇上这种问题，全局搜索含有 `languages and other directories:` 的文件。如果是其他关键词，也是一样的道理。
+遇上这种问题，我推测是执行相关命令时， `Hexo` 会对 `source/` 下的所有特定后缀文件进行语法检查。我通过全局搜索含有 `languages and other directories:` 的文件定位到之前添加的 `submodule` 中 `README.md` 存在非法（不符合 YAML 语法检查器）的内容。
 
-经检查，之前添加的 `submodule` 中 `README.md` 存在非法（不符合 YAML 语法检查器）的内容。我推测是执行相关命令时， `Hexo` 会对 `source/` 下的所有特定后缀文件进行语法检查。添加以下配置跳过这些文件就可以解决这个问题了。
+添加配置跳过这些文件就可以解决这个问题了。
 
 ```yaml
 exclude: 
