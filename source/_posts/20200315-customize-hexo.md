@@ -88,7 +88,7 @@ body {
 
 首先我们需要创建一个 repo ，用于放所有的 issue （评论）。我创建了一个名为 `gitalk-wasteland` 的 repo 。然后我们什么都不用操作，进行下一步。
 
-进入 `GitHub OAuth App` 申请页面 https://github.com/settings/applications/new ，创建一个新的 `OAuth App` 并设置 *Homepage URL* 和 *Authorization callback URL* 为 **网站首页 URL** 。然后根据配置文件注释，将 *Client ID* ， *Client Secret* *gitalk-wasteland(repo name)* 等信息填入
+进入 `GitHub OAuth App` 申请页面 https://github.com/settings/applications/new ，创建一个新的 `OAuth App` 并设置 *Homepage URL* 和 *Authorization callback URL* 为 **网站首页 URL** 。然后根据配置文件注释，将 *Client ID* ， *Client Secret* ， *gitalk-wasteland(repo name)* 等信息填入
 
 <!--more-->
 
