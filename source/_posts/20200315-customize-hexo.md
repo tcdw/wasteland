@@ -259,6 +259,39 @@ sitemap:
 $ yarn upgrade hexo-generator-sitemap
 ```
 
+## RSS hexo-generator-feed
+
+GitHub: https://github.com/hexojs/hexo-generator-feed
+
+### Install
+
+```bash
+$ yarn add hexo-generator-feed
+```
+
+## Config
+
+```yaml
+feed:
+  type: atom
+  path: atom.xml
+  limit: 0
+  hub:
+  content:
+  content_limit: 500
+  content_limit_delim: ' '
+  order_by: -date
+  icon: icon.png
+  autodiscovery: true
+  template:
+```
+
+### Update
+
+```bash
+$ yarn upgrade hexo-generator-feed
+```
+
 # 最后废话两句
 
 网上很多教程会让你直接修改主题内的文件。这不是不行，但是主题作者已经尽量将配置文件暴露，便于主题升级。

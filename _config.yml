@@ -115,3 +115,18 @@ sitemap:
 addlink:
   before_text: '------------ <br/>License: [BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) <br/>Link: '
   after_text: '<br/>Written with **Passion** and **Hope**'
+
+# RSS
+# https://github.com/hexojs/hexo-generator-feed
+feed:
+  type: atom
+  path: atom.xml
+  limit: 0
+  hub:
+  content:
+  content_limit: 500
+  content_limit_delim: ' '
+  order_by: -date
+  icon: icon.png
+  autodiscovery: true
+  template:
