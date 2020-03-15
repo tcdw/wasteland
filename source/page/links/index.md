@@ -10,6 +10,7 @@ date: 2020-03-15 13:38:08
 - 冰冰 - https://blog.icemic.moe/
 - POJO - https://twitter.com/ThrowableXYZ
 - Hzwer - http://hzwer.com/
+- WNJXYK - https://wnjxyk.tech/
 - 烧饼 - https://feng.moe/
 - 对数酱 - https://logu.co/
 - 青花鱼 - https://zankyo.cc/
@@ -24,6 +25,7 @@ date: 2020-03-15 13:38:08
 - 奶鱼 - https://www.milkfish.site/
 - DongSky - https://m1saka.moe/
 - 锅 - https://nabe.moe/
+- 鸡腿 - https://jitui.moe/
 
 # Previous Links
 
