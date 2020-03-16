@@ -8,7 +8,7 @@ date: 2020-03-15 13:38:08
 按时间排序
 
 - 冰冰 - https://blog.icemic.moe/
-- POJO - https://twitter.com/ThrowableXYZ
+- POJO - https://mns.re/
 - Hzwer - http://hzwer.com/
 - WNJXYK - https://wnjxyk.tech/
 - 烧饼 - https://feng.moe/
