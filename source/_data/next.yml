@@ -211,7 +211,8 @@ links_settings:
   layout: block
 
 links:
-#   Title: http://yoursite.com
+  Homepage: https://entry.touko.moe/
+  Legacy: https://savepoint.touko.moe/
 
 # Table of Contents in the Sidebar
 # Front-matter variable (unsupport wrap expand_all).
