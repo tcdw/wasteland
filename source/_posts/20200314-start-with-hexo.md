@@ -180,7 +180,7 @@ $ hexo s // Local development server
 
 ### Automatically Deploy
 
-可以通过在 *Hexo* 增加插件的方式，快速将静态页面部署至 *Github Pages* 。我使用了 *hexo-deployer-git* 插件，需要进行一些配置。首先在 `_config.yml` 中添加如下设置字段。
+可以通过在 *Hexo* 增加插件的方式，快速将静态页面部署至 *Github Pages* 。我使用了 *hexo-deployer-git* 插件。首先 `yarn add hexo-deployer-git` ，其次进行配置，在 `_config.yml` 中添加如下设置字段。
 
 ```yaml
 # Deployment
