@@ -41,7 +41,7 @@ Windows 下有两种广泛使用的 LaTeX 版本，分别是 `TeX Live` 和 `MiK
 
 首先需要在 VSCode 中安装依赖 `LaTeX Workshop` 。
 
-VSCode 的配置文件在上述模板中包含。但是我建议对配置文件进行一定的修改，使用更方便的安装命令。并将工程部署于 `build/` 文件夹下，保持根目录干净。
+VSCode 的配置文件在上述模板中包含。但是我建议对配置文件进行一定的修改，使用更方便的安装命令。并将工程和 pdf 文件构建于 `build/` 文件夹下，保持根目录干净。
 
 可以在 https://gist.github.com/HoshinoTouko/a2332b1756996d5e9c71605d0ff7591a 获取 `.vscode/settings.json` 和 `.latexmkrc` ，下载后放置于对应目录即可工作。
 
@@ -65,6 +65,19 @@ latexmk -xelatex -pdf -synctex=1 -interaction=nonstopmode -file-line-error -shel
 ```
 
 即可在 `build/` 文件夹下完成工程构建。
+
+# 写在最后
+
+其实我本来是想用 `overleaf` 的，但是觉得学位论文这种东西，在线保存有一定风险，还是握在自己手里比较好。所以我就捣鼓了几个小时，把环境都部署好跑起来了。本文提供的样例是武汉大学的，在 GitHub 或者 Google 根据关键词搜索，即可找到别的学校的同学制作的相关模板。例如
+
+- 浙江大学毕业设计/论文 LaTeX 模板 - https://github.com/TheNetAdmin/zjuthesis
+  包含本科生、硕士生与博士生模板，以及英文硕博士模板
+- Tsinghua University Thesis LaTeX Template - https://github.com/xueruini/thuthesis
+- fduthesis - https://github.com/stone-zeng/fduthesis
+- 上海交通大学 XeLaTeX 学位论文及课程论文模板 - https://github.com/sjtug/SJTUThesis
+- ...
+
+希望大家度过一个特殊又充实的毕业论文假期
 
 # References
 
