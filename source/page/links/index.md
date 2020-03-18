@@ -26,6 +26,8 @@ date: 2020-03-15 13:38:08
 - DongSky - https://m1saka.moe/
 - 锅 - https://nabe.moe/
 - 鸡腿 - https://jitui.moe/
+- \_勤\_ - [https://博客.胡鼎原.中国/](https://博客.胡鼎原.中国/)
+- 快刀切草莓君 - http://zrawberry.com/
 
 # Previous Links
 
