@@ -3,7 +3,7 @@ title: Customize Hexo and Theme NexT
 date: 2020-03-15 00:15:43
 categories:
 - [Web, Frontend]
-- Blog
+- [Blog]
 tags:
 - Hexo
 - Hexo Theme
