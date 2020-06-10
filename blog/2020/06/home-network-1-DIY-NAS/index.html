@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://wasteland.touko.moe/blog/2020/06/home-network-1-DIY-NAS/motherboard-with-radiator.png">
 <meta property="og:image" content="https://wasteland.touko.moe/blog/2020/06/home-network-1-DIY-NAS/overview.jpg">
 <meta property="article:published_time" content="2020-06-04T04:05:28.000Z">
-<meta property="article:modified_time" content="2020-06-10T08:00:10.903Z">
+<meta property="article:modified_time" content="2020-06-10T08:06:55.845Z">
 <meta property="article:author" content="Touko Hoshino">
 <meta property="article:tag" content="NAS">
 <meta name="twitter:card" content="summary">
@@ -254,7 +254,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-10 16:00:10" itemprop="dateModified" datetime="2020-06-10T16:00:10+08:00">2020-06-10</time>
+                <time title="Modified: 2020-06-10 16:06:55" itemprop="dateModified" datetime="2020-06-10T16:06:55+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -406,10 +406,10 @@
 <p>便宜的散热器，没什么特殊的地方。</p>
 <img src="/blog/2020/06/home-network-1-DIY-NAS/HDD-and-SSD.png" class="" title="两块 3.5 寸 1T 机械硬盘和 2.5 寸 120G 固态硬盘">
 
-<p>奶鱼送了我俩 1T 的机械硬盘，加上我自己配的固态做缓存，运行 UNRAID 系统就已经很舒服了。途中的机械硬盘已经装在硬盘架上了。机箱顶部有一个硬盘架，用减震螺丝固定，倒挂在机箱中。</p>
+<p>奶鱼送了我俩 1T 的机械硬盘，加上我自己配的固态做缓存，运行 UNRAID 系统就已经很舒服了。机箱顶部有一个硬盘架，用减震螺丝固定，倒挂在机箱中。图中的机械硬盘已经装在硬盘架上了。</p>
 <img src="/blog/2020/06/home-network-1-DIY-NAS/memory.png" class="" title="枭鲸 8G DDR4 2666 普条">
 
-<p>内存是 pdd 打折抢的枭鲸普条，反正终身保固，也不怕翻车。我台式机上用的也是枭鲸的条子，目前用起来一切正常，就是不太敢超频。</p>
+<p>内存是 pdd 打折抢的枭鲸普条，反正终身保固，也不怕翻车。我在台式机上用的也是枭鲸的条子，目前用起来一切正常，就是不太敢超频。</p>
 <h2 id="组装"><a href="#组装" class="headerlink" title="组装"></a>组装</h2><img src="/blog/2020/06/home-network-1-DIY-NAS/motherboard.png" class="" title="CPU 安装">
 
 <p>先把 CPU 怼上主板。</p>
@@ -418,7 +418,9 @@
 <p>安装散热器底座，涂硅脂，上散热。不得不说这种下压式的散热器安装十分困难，需要大力向下压。向下压散热器的时候我特别害怕大力出奇迹，把主板压断了。</p>
 <img src="/blog/2020/06/home-network-1-DIY-NAS/overview.jpg" class="" title="整体外观">
 
-<p>装完散热器之后，上内存，接线，不合盖点亮测试良好，最后上硬盘。整机安装大概花了一个多小时。我对这套平台的性能信心很足，估计跑个黑群晖+软路由，再加一系列的 Docker 应用不是问题。下一步我将安装（破解的） UNRAID 系统，会在下一篇文章继续记录。</p>
+<p>装完散热器之后，上内存，接线，不合盖点亮测试良好，最后上硬盘。整机安装大概花了一个多小时。我对这套平台的性能信心很足，估计跑个黑群晖+软路由，再加一系列的 Docker 应用不是问题。</p>
+<h2 id="功耗情况"><a href="#功耗情况" class="headerlink" title="功耗情况"></a>功耗情况</h2><p>实际测试中，所有硬盘都启动的功耗大约在 35W 左右，CPU 满负载功耗大约 55W。这是一个我可以接受的范围。</p>
+<p>之后我将安装（破解的） UNRAID 系统，会在下一篇文章继续记录。</p>
 <p>———— <br/>License: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">BY-NC-SA 4.0</a> <br/>Link:  <a href="https://wasteland.touko.moe//blog/2020/06/home-network-1-DIY-NAS/">https://wasteland.touko.moe//blog/2020/06/home-network-1-DIY-NAS/</a> <br/>Written with <strong>Passion</strong> and <strong>Hope</strong></p>
 
     </div>
@@ -496,13 +498,10 @@
           
       <div class="tabs tabs-comment">
         <ul class="nav-tabs">
-            <li class="tab"><a href="#comment-gitalk">gitalk</a></li>
             <li class="tab"><a href="#comment-disqus">disqus</a></li>
+            <li class="tab"><a href="#comment-gitalk">gitalk</a></li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane gitalk" id="comment-gitalk">
-              <div class="comments" id="gitalk-container"></div>
-            </div>
             <div class="tab-pane disqus" id="comment-disqus">
               
   <div class="comments">
@@ -511,6 +510,9 @@
     </div>
   </div>
   
+            </div>
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments" id="gitalk-container"></div>
             </div>
         </div>
       </div>
@@ -560,7 +562,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#心血来潮"><span class="nav-number">1.</span> <span class="nav-text">心血来潮</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置选择"><span class="nav-number">2.</span> <span class="nav-text">配置选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU"><span class="nav-number">2.1.</span> <span class="nav-text">CPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主板和机箱"><span class="nav-number">2.2.</span> <span class="nav-text">主板和机箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存和其他"><span class="nav-number">2.3.</span> <span class="nav-text">内存和其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终配置单"><span class="nav-number">2.4.</span> <span class="nav-text">最终配置单</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#装机"><span class="nav-number">3.</span> <span class="nav-text">装机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配件一览"><span class="nav-number">3.1.</span> <span class="nav-text">配件一览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组装"><span class="nav-number">3.2.</span> <span class="nav-text">组装</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#心血来潮"><span class="nav-number">1.</span> <span class="nav-text">心血来潮</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置选择"><span class="nav-number">2.</span> <span class="nav-text">配置选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU"><span class="nav-number">2.1.</span> <span class="nav-text">CPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主板和机箱"><span class="nav-number">2.2.</span> <span class="nav-text">主板和机箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存和其他"><span class="nav-number">2.3.</span> <span class="nav-text">内存和其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终配置单"><span class="nav-number">2.4.</span> <span class="nav-text">最终配置单</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#装机"><span class="nav-number">3.</span> <span class="nav-text">装机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配件一览"><span class="nav-number">3.1.</span> <span class="nav-text">配件一览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组装"><span class="nav-number">3.2.</span> <span class="nav-text">组装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功耗情况"><span class="nav-number">3.3.</span> <span class="nav-text">功耗情况</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -817,26 +819,6 @@ window.addEventListener('pjax:success', () => {
       });
   </script>
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-
-<script>
-NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
-    var gitalk = new Gitalk({
-      clientID    : '6e3b778b69268ae5e923',
-      clientSecret: '9025af071807d6ff552d25ed4be80b1af08b9a8c',
-      repo        : 'gitalk-wasteland',
-      owner       : 'HoshinoTouko',
-      admin       : ['HoshinoTouko'],
-      id          : '66c2de026ccab80a2791133be76c66da',
-        language: '',
-      distractionFreeMode: true
-    });
-    gitalk.render('gitalk-container');
-  }, window.Gitalk);
-});
-</script>
-
 <script>
   var disqus_config = function() {
     this.page.url = "https://wasteland.touko.moe/blog/2020/06/home-network-1-DIY-NAS/";
@@ -856,6 +838,26 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       (d.head || d.body).appendChild(s);
     }
   });
+</script>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '6e3b778b69268ae5e923',
+      clientSecret: '9025af071807d6ff552d25ed4be80b1af08b9a8c',
+      repo        : 'gitalk-wasteland',
+      owner       : 'HoshinoTouko',
+      admin       : ['HoshinoTouko'],
+      id          : '66c2de026ccab80a2791133be76c66da',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
 </script>
 
     </div>

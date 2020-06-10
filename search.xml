@@ -121,10 +121,10 @@
 <p>便宜的散热器，没什么特殊的地方。</p>
 <img src="/blog/2020/06/home-network-1-DIY-NAS/HDD-and-SSD.png" class="" title="两块 3.5 寸 1T 机械硬盘和 2.5 寸 120G 固态硬盘">
 
-<p>奶鱼送了我俩 1T 的机械硬盘，加上我自己配的固态做缓存，运行 UNRAID 系统就已经很舒服了。途中的机械硬盘已经装在硬盘架上了。机箱顶部有一个硬盘架，用减震螺丝固定，倒挂在机箱中。</p>
+<p>奶鱼送了我俩 1T 的机械硬盘，加上我自己配的固态做缓存，运行 UNRAID 系统就已经很舒服了。机箱顶部有一个硬盘架，用减震螺丝固定，倒挂在机箱中。图中的机械硬盘已经装在硬盘架上了。</p>
 <img src="/blog/2020/06/home-network-1-DIY-NAS/memory.png" class="" title="枭鲸 8G DDR4 2666 普条">
 
-<p>内存是 pdd 打折抢的枭鲸普条，反正终身保固，也不怕翻车。我台式机上用的也是枭鲸的条子，目前用起来一切正常，就是不太敢超频。</p>
+<p>内存是 pdd 打折抢的枭鲸普条，反正终身保固，也不怕翻车。我在台式机上用的也是枭鲸的条子，目前用起来一切正常，就是不太敢超频。</p>
 <h2 id="组装"><a href="#组装" class="headerlink" title="组装"></a>组装</h2><img src="/blog/2020/06/home-network-1-DIY-NAS/motherboard.png" class="" title="CPU 安装">
 
 <p>先把 CPU 怼上主板。</p>
@@ -133,7 +133,9 @@
 <p>安装散热器底座，涂硅脂，上散热。不得不说这种下压式的散热器安装十分困难，需要大力向下压。向下压散热器的时候我特别害怕大力出奇迹，把主板压断了。</p>
 <img src="/blog/2020/06/home-network-1-DIY-NAS/overview.jpg" class="" title="整体外观">
 
-<p>装完散热器之后，上内存，接线，不合盖点亮测试良好，最后上硬盘。整机安装大概花了一个多小时。我对这套平台的性能信心很足，估计跑个黑群晖+软路由，再加一系列的 Docker 应用不是问题。下一步我将安装（破解的） UNRAID 系统，会在下一篇文章继续记录。</p>
+<p>装完散热器之后，上内存，接线，不合盖点亮测试良好，最后上硬盘。整机安装大概花了一个多小时。我对这套平台的性能信心很足，估计跑个黑群晖+软路由，再加一系列的 Docker 应用不是问题。</p>
+<h2 id="功耗情况"><a href="#功耗情况" class="headerlink" title="功耗情况"></a>功耗情况</h2><p>实际测试中，所有硬盘都启动的功耗大约在 35W 左右，CPU 满负载功耗大约 55W。这是一个我可以接受的范围。</p>
+<p>之后我将安装（破解的） UNRAID 系统，会在下一篇文章继续记录。</p>
 <p>———— <br/>License: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">BY-NC-SA 4.0</a> <br/>Link:  <a href="https://wasteland.touko.moe//blog/2020/06/home-network-1-DIY-NAS/">https://wasteland.touko.moe//blog/2020/06/home-network-1-DIY-NAS/</a> <br/>Written with <strong>Passion</strong> and <strong>Hope</strong></p>
 ]]></content>
       <categories>
