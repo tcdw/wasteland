@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wasteland.touko.moe/"/>
-  <updated>2020-06-10T07:43:18.250Z</updated>
+  <updated>2020-06-10T07:59:39.993Z</updated>
   <id>https://wasteland.touko.moe/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://wasteland.touko.moe/blog/2020/06/home-network-1-DIY-NAS/"/>
     <id>https://wasteland.touko.moe/blog/2020/06/home-network-1-DIY-NAS/</id>
     <published>2020-06-10T04:05:28.000Z</published>
-    <updated>2020-06-10T07:43:18.250Z</updated>
+    <updated>2020-06-10T07:59:39.993Z</updated>
     
     <summary type="html">
     
@@ -38,9 +38,9 @@
 &lt;li&gt;有升级空间&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;CPU&quot;&gt;&lt;a href=&quot;#CPU&quot; class=&quot;headerlink&quot; title=&quot;CPU&quot;&gt;&lt;/a&gt;CPU&lt;/h2&gt;&lt;p&gt;首先选择 CPU。有朋友在微博推荐 200GE 板 U 套装，这里也推荐，挺不错，只要 500，性能和价格相符，TDP 也只有 35W。但是因为前段时间已经装了一台 AMD 的机子了，CPU 就不选择 AMD 的了。经过各种对比，选择了低功耗六代 i3-6100T。原本打算考虑奔腾 G5600T，但是掐指一算发现超预算了。我是盯着天梯图和 TDP 找的。后来发现在实际使用中，不一定要买低功耗版本，因为很多情况下，Intel 只是对其做了功耗上限的限制，其他和标压版本相差无几。高性能的 U 在运行相同的计算任务的时候，理论上功耗也差不多，所以 TDP 并不是一个需要非常关注的点。&lt;/p&gt;
-&lt;h2 id=&quot;主板和机箱&quot;&gt;&lt;a href=&quot;#主板和机箱&quot; class=&quot;headerlink&quot; title=&quot;主板和机箱&quot;&gt;&lt;/a&gt;主板和机箱&lt;/h2&gt;&lt;p&gt;主板和机箱是需要一起考虑的。由于我并不打算上赛扬 J 平台，ITX 的主板价格也很贵，所以和 ITX 无缘。于是我先考虑 m-ATX 的机箱。我看中了金河田的 &lt;code&gt;遇见 N1&lt;/code&gt; 。这个机箱非常小巧，整体只有 &lt;code&gt;202 * 328 * 260mm&lt;/code&gt; ，支持 ATX 电源，2 个 3.5 盘位 + 2 个 2.5 or 1 个 3.5 盘位。如果电源用 SFX 或者直流，还能再装 2-4 个 3.5 硬盘。支持一个机箱散热风扇。综合考虑，我选择了这款机箱。&lt;/p&gt;
+&lt;h2 id=&quot;主板和机箱&quot;&gt;&lt;a href=&quot;#主板和机箱&quot; class=&quot;headerlink&quot; title=&quot;主板和机箱&quot;&gt;&lt;/a&gt;主板和机箱&lt;/h2&gt;&lt;p&gt;主板和机箱需要一起考虑。由于我并不打算上赛扬 J 平台，ITX 的主板价格也很贵，所以就无缘 ITX 了。于是我考虑 m-ATX 的主板和机箱。机箱我看中了金河田的 &lt;code&gt;预见 N1&lt;/code&gt; 。这个机箱非常小巧，整体只有 &lt;code&gt;202 * 328 * 260mm&lt;/code&gt; ，支持 ATX 电源，2 个 3.5 盘位 + 2 个 2.5 or 1 个 3.5 盘位。如果电源用 SFX 或者直流，还能再装 2-4 个 3.5 硬盘。支持一个机箱散热风扇。综合考虑，我选择了这款机箱。&lt;/p&gt;
 &lt;p&gt;选择机箱后，我开始考虑主板。为了给以后升级 8-9 代 U 留出空间，根据机箱要求的主板大小（最大 230*185mm），我选择了支持 6、7 代，能刷 BIOS 上 8、9 代 CPU 的 技嘉 B250M-D2VX-SI （226 * 185 mm）。&lt;/p&gt;
-&lt;h2 id=&quot;内存和其他&quot;&gt;&lt;a href=&quot;#内存和其他&quot; class=&quot;headerlink&quot; title=&quot;内存和其他&quot;&gt;&lt;/a&gt;内存和其他&lt;/h2&gt;&lt;p&gt;内存没什么好说的，枭鲸前段时间搞活动，89 RMB 的 DDR4 2666 8G 条。&lt;/p&gt;
+&lt;h2 id=&quot;内存和其他&quot;&gt;&lt;a href=&quot;#内存和其他&quot; class=&quot;headerlink&quot; title=&quot;内存和其他&quot;&gt;&lt;/a&gt;内存和其他&lt;/h2&gt;&lt;p&gt;内存没什么好说的，枭鲸前段时间搞活动，89 RMB 的 DDR4 2666 8G 条。希望能够长期稳定运行。&lt;/p&gt;
 &lt;p&gt;其他配件都是零零散散买起来的，有刚好或者喜欢的就买了。&lt;/p&gt;
 &lt;h2 id=&quot;最终配置单&quot;&gt;&lt;a href=&quot;#最终配置单&quot; class=&quot;headerlink&quot; title=&quot;最终配置单&quot;&gt;&lt;/a&gt;最终配置单&lt;/h2&gt;
     
@@ -311,9 +311,9 @@
     
       <category term="Web" scheme="https://wasteland.touko.moe/categories/Web/"/>
     
-      <category term="Talk" scheme="https://wasteland.touko.moe/categories/Talk/"/>
-    
       <category term="Frontend" scheme="https://wasteland.touko.moe/categories/Web/Frontend/"/>
+    
+      <category term="Talk" scheme="https://wasteland.touko.moe/categories/Talk/"/>
     
       <category term="Blog" scheme="https://wasteland.touko.moe/categories/Blog/"/>
     
