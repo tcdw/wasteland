@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wasteland.touko.moe/blog/2020/03/start-with-hexo/</loc>
+    
+    <lastmod>2020-06-10T07:54:54.167Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wasteland.touko.moe/blog/2020/06/home-network-1-DIY-NAS/</loc>
     
     <lastmod>2020-06-10T07:43:18.250Z</lastmod>
@@ -30,13 +37,6 @@
   </url>
   
   <url>
-    <loc>https://wasteland.touko.moe/lib/pjax/example/page2.html</loc>
-    
-    <lastmod>2020-06-04T13:43:36.948Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://wasteland.touko.moe/lib/pjax/example/page3.html</loc>
     
     <lastmod>2020-06-04T13:43:36.948Z</lastmod>
@@ -44,14 +44,21 @@
   </url>
   
   <url>
-    <loc>https://wasteland.touko.moe/lib/pjax/example/forms.html</loc>
+    <loc>https://wasteland.touko.moe/lib/pjax/example/page2.html</loc>
+    
+    <lastmod>2020-06-04T13:43:36.948Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wasteland.touko.moe/lib/pjax/example/index.html</loc>
     
     <lastmod>2020-06-04T13:43:36.947Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wasteland.touko.moe/lib/pjax/example/index.html</loc>
+    <loc>https://wasteland.touko.moe/lib/pjax/example/forms.html</loc>
     
     <lastmod>2020-06-04T13:43:36.947Z</lastmod>
     
@@ -79,14 +86,14 @@
   </url>
   
   <url>
-    <loc>https://wasteland.touko.moe/blog/2020/03/customize-hexo/</loc>
+    <loc>https://wasteland.touko.moe/blog/2020/03/write-thesis-with-latex/</loc>
     
     <lastmod>2020-06-04T13:43:20.745Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wasteland.touko.moe/blog/2020/03/write-thesis-with-latex/</loc>
+    <loc>https://wasteland.touko.moe/blog/2020/03/customize-hexo/</loc>
     
     <lastmod>2020-06-04T13:43:20.745Z</lastmod>
     
@@ -101,13 +108,6 @@
   
   <url>
     <loc>https://wasteland.touko.moe/blog/2020/03/hello-world/</loc>
-    
-    <lastmod>2020-06-04T13:43:20.742Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wasteland.touko.moe/blog/2020/03/start-with-hexo/</loc>
     
     <lastmod>2020-06-04T13:43:20.742Z</lastmod>
     
