@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wasteland.touko.moe/blog/2020/04/intranet-cluster-management/</loc>
+    
+    <lastmod>2020-06-10T08:11:19.850Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wasteland.touko.moe/blog/2020/06/home-network-1-DIY-NAS/</loc>
     
     <lastmod>2020-06-10T08:06:55.845Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://wasteland.touko.moe/blog/2020/03/start-with-hexo/</loc>
     
     <lastmod>2020-06-10T07:54:54.167Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wasteland.touko.moe/blog/2020/04/intranet-cluster-management/</loc>
-    
-    <lastmod>2020-06-10T04:02:23.146Z</lastmod>
     
   </url>
   
