@@ -890,7 +890,7 @@ hexo-bunyan@^2.0.0:
     mv "~2"
     safe-json-stringify "~1"
 
-hexo-cli@^3.0.0:
+hexo-cli@^3.0.0, hexo-cli@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npm.taobao.org/hexo-cli/download/hexo-cli-3.1.0.tgz#a7414d4647333fe73762f86d77e5660659c0d05b"
   integrity sha1-p0FNRkczP+c3Yvhtd+VmBlnA0Fs=

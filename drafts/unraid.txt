@@ -1,0 +1,54 @@
+install apps module
+https://forums.unraid.net/topic/38582-plug-in-community-applications/
+
+
+更换 docker 源
+https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors
+
+https://www.cnblogs.com/LandWind/p/12367448.html
+
+
+DNS and ad-blocking
+https://www.reddit.com/r/unRAID/comments/7sf0hg/use_your_unraid_box_as_an_ad_blocking_dns_server/
+https://pi-hole.net/
+网桥 br0
+保持上下 IP 地址一致
+更改时区（Asia/Shanghai）
+
+
+
+Plex server
+https://forums.plex.tv/t/how-do-you-install-the-official-plex-for-unraid/206596
+https://support.plex.tv/articles/200264746-quick-start-step-by-step-guides/
+https://support.plex.tv/articles/201373823-nas-devices-and-limitations/
+
+Go To https://plex.tv/claim
+
+
+https://forums.unraid.net/topic/5962-how-to-create-a-symlink-to-folder-stored-on-unraid/
+https://www.lxg2016.com/54154.html
+
+
+tmm
+https://zhuanlan.zhihu.com/p/112167546
+https://forums.unraid.net/topic/34280-tinymediamanager-container-accessible-through-web-browser/
+https://github.com/dzhuang/tinymediamanager-docker
+
+
+https://github.com/ZeroQI/Hama.bundle
+https://github.com/ZeroQI/Absolute-Series-Scanner/
+
+https://github.com/Dingmatt/AMSA/
+
+
+pi-hole password
+
+sudo pihole -a -p
+https://handlers.sans.edu/gbruneau/pihole.htm
+
+remote pi-hole
+https://discourse.pi-hole.net/t/how-to-enable-remote-internet-access-for-pi-hole-web-dashboard/7025
+
+
+宿主机通信 docker
+https://forums.unraid.net/topic/77390-cannot-access-dockers-using-custombr0/

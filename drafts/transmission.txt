@@ -1,0 +1,3 @@
+https://post.smzdm.com/p/amm5q9xv/ Transmission install
+
+-e TRANSMISSION_WEB_HOME=/transmission-web-control/

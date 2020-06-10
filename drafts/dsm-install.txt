@@ -1,0 +1,22 @@
+Ref
+
+https://xpenology.com/forum/topic/19925-9th-gen-intel-cpu/?tab=comments#comment-119001
+https://post.smzdm.com/p/az50d36r/
+https://www.lxg2016.com/53301.html
+https://forums.unraid.net/topic/40241-how-do-i-delete-a-user-share/
+http://www.hopol.cn/2020/03/1604/
+
+
+
+破解引导下载
+https://xpenology.club/downloads/
+
+00:11:32:2C:A6:03 （根据不同引导走）
+
+系统文件下载
+https://www.synology.cn/en-global/support/download/DS3617xs#firmware
+https://archive.synology.com/download/DSM/release/6.2/23739/
+
+
+查找本地群晖地址
+http://find.synology.com/
