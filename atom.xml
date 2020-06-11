@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wasteland.touko.moe/"/>
-  <updated>2020-06-10T08:06:55.845Z</updated>
+  <updated>2020-06-11T16:38:32.342Z</updated>
   <id>https://wasteland.touko.moe/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>家庭网络管理(2): 部署和使用 UNRAID</title>
+    <link href="https://wasteland.touko.moe/blog/2020/06/home-network-2-enjoy-with-UNRAID/"/>
+    <id>https://wasteland.touko.moe/blog/2020/06/home-network-2-enjoy-with-UNRAID/</id>
+    <published>2020-06-10T08:17:07.000Z</published>
+    <updated>2020-06-11T16:38:32.342Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;选择-UNRAID&quot;&gt;&lt;a href=&quot;#选择-UNRAID&quot; class=&quot;headerlink&quot; title=&quot;选择 UNRAID&quot;&gt;&lt;/a&gt;选择 UNRAID&lt;/h1&gt;&lt;p&gt;在组装完 NAS 之后，下一步就是考虑如何将 NAS 的硬件性能高效利用。经过对群晖、UNRAID、FreeNAS 等 NAS 操作系统的调研后，我决定使用 UNRAID 作为我的 NAS OS。一是因为 UNRAID 对 Docker 和 VM 的支持较好，有庞大的社区支持；二是因为 UNRAID 的阵列功能很好用，自带的软 RAID 功能可以只用一张 Parity Check 盘完成其他所有盘的校验；三是因为 UNRAID 的 Web UI （相对）比较符合我的审美。话不多说，立刻开始破解版 UNRAID 安装。&lt;/p&gt;
+&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;p&gt;UNRAID 的官网是 &lt;a href=&quot;https://unraid.net/&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Network" scheme="https://wasteland.touko.moe/categories/Network/"/>
+    
+      <category term="NAS" scheme="https://wasteland.touko.moe/categories/NAS/"/>
+    
+    
+      <category term="NAS" scheme="https://wasteland.touko.moe/tags/NAS/"/>
+    
+  </entry>
   
   <entry>
     <title>家庭网络管理(1): 组装一台千元 NAS</title>
@@ -313,9 +343,9 @@
     
       <category term="Frontend" scheme="https://wasteland.touko.moe/categories/Web/Frontend/"/>
     
-      <category term="Talk" scheme="https://wasteland.touko.moe/categories/Talk/"/>
-    
       <category term="Blog" scheme="https://wasteland.touko.moe/categories/Blog/"/>
+    
+      <category term="Talk" scheme="https://wasteland.touko.moe/categories/Talk/"/>
     
     
       <category term="Hexo" scheme="https://wasteland.touko.moe/tags/Hexo/"/>
