@@ -1,12 +1,3 @@
-install apps module
-https://forums.unraid.net/topic/38582-plug-in-community-applications/
-
-
-更换 docker 源
-https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors
-
-https://www.cnblogs.com/LandWind/p/12367448.html
-
 
 DNS and ad-blocking
 https://www.reddit.com/r/unRAID/comments/7sf0hg/use_your_unraid_box_as_an_ad_blocking_dns_server/

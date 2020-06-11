@@ -111,7 +111,7 @@ JumpServer 的设计非常用户友好，基本不需要额外学习就能很快
 
 {% asset_img v2ray-NAT-traversal.png V2Ray NAT Traversal %}
 
-在内网穿透用的 V2Ray 程序中，节点的两个属性被定义。一个叫 `bridge`，另一个叫 `portal` 。这两个属性定义于 V2Ray 配置文件中 `ReverseObject` 项。`bridge` 作为内网的一方，会主动向 `portal` 方发起连接并长期保持。`bridge` 和 `portal` 都需要手工定义路由表来实现定向的流量转发。
+在内网穿透用的 V2Ray 程序中，节点可以被分为两类，一类叫 `bridge`，另一类叫 `portal` 。这两类属性定义于 V2Ray 配置文件中 `ReverseObject` 项。`bridge` 作为内网的一方，会主动向 `portal` 方发起连接并长期保持。`bridge` 和 `portal` 都需要手工定义路由表来实现定向的流量转发。
 
 建议先运行公网服务器 `portal`，再运行内网服务器 `bridge`。内网服务器会根据配置的 vmess 连接方式，连接公网服务器对应端口，并接收其所有流量。这就完成了内网穿透的第一步，保持一条从内网到公网的隧道（`tunnel`），让内网服务器可以主动接受其他连接。为了实现反向代理流量的转发，我们还需要手工配置路由表。直接从配置文件入手。
 
