@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wasteland.touko.moe/"/>
-  <updated>2020-06-12T06:22:36.597Z</updated>
+  <updated>2020-06-12T07:07:05.441Z</updated>
   <id>https://wasteland.touko.moe/</id>
   
   <author>
@@ -15,36 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>家庭网络管理(2): 部署和使用 UNRAID</title>
-    <link href="https://wasteland.touko.moe/blog/2020/06/home-network-2-enjoy-with-UNRAID/"/>
-    <id>https://wasteland.touko.moe/blog/2020/06/home-network-2-enjoy-with-UNRAID/</id>
-    <published>2020-06-10T08:17:07.000Z</published>
-    <updated>2020-06-12T06:22:36.597Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;选择-UNRAID&quot;&gt;&lt;a href=&quot;#选择-UNRAID&quot; class=&quot;headerlink&quot; title=&quot;选择 UNRAID&quot;&gt;&lt;/a&gt;选择 UNRAID&lt;/h1&gt;&lt;p&gt;在组装完 NAS 之后，下一步就是考虑如何将 NAS 的硬件性能高效利用。经过对群晖、UNRAID、FreeNAS 等 NAS 操作系统的调研后，我决定使用 UNRAID 作为我的 NAS OS。一是因为 UNRAID 对 Docker 和 VM 的支持较好，有庞大的社区支持；二是因为 UNRAID 的阵列功能很好用，自带的软 RAID 功能可以只用一张 Parity Check 盘完成其他所有盘的校验；三是因为 UNRAID 的 Web UI （相对）比较符合我的审美。话不多说，立刻开始破解版 UNRAID 安装。&lt;/p&gt;
-&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;p&gt;UNRAID 的官网是 &lt;a href=&quot;https://unraid.net/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://unraid.net/&lt;/a&gt; ，价格表在 &lt;a href=&quot;https://unraid.net/pricing&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://unraid.net/pricing&lt;/a&gt; 。从价格上看，Basic 订阅只要 60 刀，还是比较合适的。由于我第一次使用这个操作系统，所以先从破解版入手。&lt;/p&gt;
-&lt;img src=&quot;/blog/2020/06/home-network-2-enjoy-with-UNRAID/unraid-pricing.png&quot; class=&quot;&quot; title=&quot;UNRAID 价格表&quot;&gt;
-
-&lt;p&gt;安装 UNRAID 需要准备一个 U 盘作为启动盘和系统盘，并且之后整个系统就安装在这块 U 盘中。这个 U 盘在以后使用 UNRAID 时，需要一直插在 USB 口上。不能使用 SD 卡 + 读卡器，因为可能获取不到正确的设备 ID。 UNRAID 系统根据闪存的设备 ID 分发密钥。在安装之前，需要将闪存格式化成 FAT32 格式。如果 Windows 不支持格式化为 FAT32 ，可以使用 &lt;a href=&quot;http://www.ridgecrop.demon.co.uk/index.htm?guiformat.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Windows GUI version of &lt;em&gt;fat32format&lt;/em&gt;&lt;/a&gt; 将闪存格式化为 FAT32 格式。&lt;strong&gt;切记，在进行格式化操作之前，务必做好数据备份。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;截至目前，最新的破解版是 &lt;code&gt;UNRAID 6.8.2&lt;/code&gt; ，下载地址在 &lt;a href=&quot;http://www.hopol.cn/2020/06/1675/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.hopol.cn/2020/06/1675/&lt;/a&gt; 。这个安装包自带密钥计算工具，可以使用 &lt;a href=&quot;https://koolshare.cn/thread-181253-1-1.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://koolshare.cn/thread-181253-1-1.html&lt;/a&gt; 提供的一键安装工具进行安装；或者按照破解版下载页面的安装方法设置 UNRAID U 盘 启动，然后再回到 Windows 进行破解密钥生成。&lt;/p&gt;
-&lt;h1 id=&quot;初期配置&quot;&gt;&lt;a href=&quot;#初期配置&quot; class=&quot;headerlink&quot; title=&quot;初期配置&quot;&gt;&lt;/a&gt;初期配置&lt;/h1&gt;&lt;h2 id=&quot;点亮&quot;&gt;&lt;a href=&quot;#点亮&quot; class=&quot;headerlink&quot; title=&quot;点亮&quot;&gt;&lt;/a&gt;点亮&lt;/h2&gt;&lt;p&gt;先将显示器接上运行 UNRAID 的机器。在开机启动时，狂按 Del 进入 BIOS 配置页面，修改默认主板设置。我先修改默认启动引导至装有 UNRAID 系统的 U 盘上，然后打开了 CPU 的虚拟化功能（VT-d），F10 保存重启。&lt;/p&gt;
-&lt;p&gt;启动选项选择 &lt;code&gt;Unraid OS (Headless)&lt;/code&gt; 。如果正常启动，在命令行可以看到 UNRAID 被分配到的 IP 地址。通过 Web 访问即可。默认账户为 root ，无密码。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Network" scheme="https://wasteland.touko.moe/categories/Network/"/>
-    
-      <category term="NAS" scheme="https://wasteland.touko.moe/categories/NAS/"/>
-    
-    
-      <category term="NAS" scheme="https://wasteland.touko.moe/tags/NAS/"/>
-    
-  </entry>
   
   <entry>
     <title>家庭网络管理(3): UNRAID 安装黑群晖和其他常用软件</title>
@@ -72,6 +42,36 @@
 
 &lt;p&gt;安装黑群晖的原理是安装一个第三方的、破解后的引导，来欺骗群晖系统镜像正常工作。因此我们需要下载破解的引导作为启动盘，然后去官方网站上下载安装镜像就可以了。破解的引导我推荐在 &lt;a href=&quot;https://xpenology.club/downloads/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://xpenology.club/downloads/&lt;/a&gt; 下载。网站中 DSM 6.2指的是支持 &lt;code&gt;DSM 6.2&lt;/code&gt; 的系统，引导的文件名最后一串为群晖的机型。在安装时注意下载对应系统和机型的镜像。可以在 &lt;a href=&quot;https://archive.synology.com/download/DSM/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://archive.synology.com/download/DSM/&lt;/a&gt; 下载。&lt;/p&gt;
 &lt;p&gt;由于我的虚拟机无法正常启动 &lt;code&gt;Jun’s Loader v1.04b DS918+&lt;/code&gt; ，这里以 &lt;code&gt;Jun’s Loaders DSM 6.2&lt;/code&gt; - &lt;code&gt;Jun’s Loader v1.03b DS3617xs&lt;/code&gt; 为例。下载对应引导并解压，将引导拷贝至 NAS。我创建了一个共享文件夹 HackSynology 用于放置群晖相关文件。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Network" scheme="https://wasteland.touko.moe/categories/Network/"/>
+    
+      <category term="NAS" scheme="https://wasteland.touko.moe/categories/NAS/"/>
+    
+    
+      <category term="NAS" scheme="https://wasteland.touko.moe/tags/NAS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>家庭网络管理(2): 部署和使用 UNRAID</title>
+    <link href="https://wasteland.touko.moe/blog/2020/06/home-network-2-enjoy-with-UNRAID/"/>
+    <id>https://wasteland.touko.moe/blog/2020/06/home-network-2-enjoy-with-UNRAID/</id>
+    <published>2020-06-08T08:17:07.000Z</published>
+    <updated>2020-06-12T10:10:22.244Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;选择-UNRAID&quot;&gt;&lt;a href=&quot;#选择-UNRAID&quot; class=&quot;headerlink&quot; title=&quot;选择 UNRAID&quot;&gt;&lt;/a&gt;选择 UNRAID&lt;/h1&gt;&lt;p&gt;在组装完 NAS 之后，下一步就是考虑如何将 NAS 的硬件性能高效利用。经过对群晖、UNRAID、FreeNAS 等 NAS 操作系统的调研后，我决定使用 UNRAID 作为我的 NAS OS。一是因为 UNRAID 对 Docker 和 VM 的支持较好，有庞大的社区支持；二是因为 UNRAID 的阵列功能很好用，自带的软 RAID 功能可以只用一张 Parity Check 盘完成其他所有盘的校验；三是因为 UNRAID 的 Web UI （相对）比较符合我的审美。话不多说，立刻开始破解版 UNRAID 安装。&lt;/p&gt;
+&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;p&gt;UNRAID 的官网是 &lt;a href=&quot;https://unraid.net/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://unraid.net/&lt;/a&gt; ，价格表在 &lt;a href=&quot;https://unraid.net/pricing&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://unraid.net/pricing&lt;/a&gt; 。从价格上看，Basic 订阅只要 60 刀，还是比较合适的。由于我第一次使用这个操作系统，所以先从破解版入手。&lt;/p&gt;
+&lt;img src=&quot;/blog/2020/06/home-network-2-enjoy-with-UNRAID/unraid-pricing.png&quot; class=&quot;&quot; title=&quot;UNRAID 价格表&quot;&gt;
+
+&lt;p&gt;安装 UNRAID 需要准备一个 U 盘作为启动盘和系统盘，并且之后整个系统就安装在这块 U 盘中。这个 U 盘在以后使用 UNRAID 时，需要一直插在 USB 口上。不能使用 SD 卡 + 读卡器，因为可能获取不到正确的设备 ID。 UNRAID 系统根据闪存的设备 ID 分发密钥。在安装之前，需要将闪存格式化成 FAT32 格式。如果 Windows 不支持格式化为 FAT32 ，可以使用 &lt;a href=&quot;http://www.ridgecrop.demon.co.uk/index.htm?guiformat.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Windows GUI version of &lt;em&gt;fat32format&lt;/em&gt;&lt;/a&gt; 将闪存格式化为 FAT32 格式。&lt;strong&gt;切记，在进行格式化操作之前，务必做好数据备份。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;截至目前，最新的破解版是 &lt;code&gt;UNRAID 6.8.2&lt;/code&gt; ，下载地址在 &lt;a href=&quot;http://www.hopol.cn/2020/06/1675/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.hopol.cn/2020/06/1675/&lt;/a&gt; 。这个安装包自带密钥计算工具，可以使用 &lt;a href=&quot;https://koolshare.cn/thread-181253-1-1.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://koolshare.cn/thread-181253-1-1.html&lt;/a&gt; 提供的一键安装工具进行安装；或者按照破解版下载页面的安装方法设置 UNRAID U 盘 启动，然后再回到 Windows 进行破解密钥生成。&lt;/p&gt;
+&lt;h1 id=&quot;初期配置&quot;&gt;&lt;a href=&quot;#初期配置&quot; class=&quot;headerlink&quot; title=&quot;初期配置&quot;&gt;&lt;/a&gt;初期配置&lt;/h1&gt;&lt;h2 id=&quot;点亮&quot;&gt;&lt;a href=&quot;#点亮&quot; class=&quot;headerlink&quot; title=&quot;点亮&quot;&gt;&lt;/a&gt;点亮&lt;/h2&gt;&lt;p&gt;先将显示器接上运行 UNRAID 的机器。在开机启动时，狂按 Del 进入 BIOS 配置页面，修改默认主板设置。我先修改默认启动引导至装有 UNRAID 系统的 U 盘上，然后打开了 CPU 的虚拟化功能（VT-d），F10 保存重启。&lt;/p&gt;
+&lt;p&gt;启动选项选择 &lt;code&gt;Unraid OS (Headless)&lt;/code&gt; 。如果正常启动，在命令行可以看到 UNRAID 被分配到的 IP 地址。通过 Web 访问即可。默认账户为 root ，无密码。&lt;/p&gt;
     
     </summary>
     
@@ -380,9 +380,9 @@
     
       <category term="Web" scheme="https://wasteland.touko.moe/categories/Web/"/>
     
-      <category term="Frontend" scheme="https://wasteland.touko.moe/categories/Web/Frontend/"/>
-    
       <category term="Talk" scheme="https://wasteland.touko.moe/categories/Talk/"/>
+    
+      <category term="Frontend" scheme="https://wasteland.touko.moe/categories/Web/Frontend/"/>
     
       <category term="Blog" scheme="https://wasteland.touko.moe/categories/Blog/"/>
     
