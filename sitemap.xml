@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wasteland.touko.moe/blog/2020/06/home-network-3-hack-synology-and-more/</loc>
+    
+    <lastmod>2020-06-12T06:50:00.144Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wasteland.touko.moe/blog/2020/06/home-network-2-enjoy-with-UNRAID/</loc>
     
-    <lastmod>2020-06-12T01:09:53.490Z</lastmod>
+    <lastmod>2020-06-12T06:22:36.597Z</lastmod>
     
   </url>
   
@@ -44,14 +51,14 @@
   </url>
   
   <url>
-    <loc>https://wasteland.touko.moe/lib/pjax/example/page2.html</loc>
+    <loc>https://wasteland.touko.moe/lib/pjax/example/page3.html</loc>
     
     <lastmod>2020-06-04T13:43:36.948Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wasteland.touko.moe/lib/pjax/example/page3.html</loc>
+    <loc>https://wasteland.touko.moe/lib/pjax/example/page2.html</loc>
     
     <lastmod>2020-06-04T13:43:36.948Z</lastmod>
     

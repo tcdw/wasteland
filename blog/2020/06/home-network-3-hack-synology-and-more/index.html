@@ -25,26 +25,20 @@
     var CONFIG = {"hostname":"wasteland.touko.moe","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":{"gitalk":{"order":0},"disqus":{"order":1}},"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="本文使用 武汉大学 毕业论文模板。 准备写论文可喜可贺，我终于要开始动笔我的毕业论文了。虽然论文相关的实验和理论准备已经就绪了很长一段时间，但是就是提不起精神写文章。这周其他突发堆积的事情逐渐清空，我准备忙里偷闲，开始写毕业论文。 某天，一同学在群里发了一份 武汉大学毕业论文 LaTeX 模板，我一看，巧了，老朋友写的 repository ，于是正好近期开工，把它下载下来用。 环境配置 本文基础">
+  <meta name="description" content="NAS 该用来做什么我打算将 NAS 定位为一个家庭用的小型多媒体平台，并作为软路由处理流量。因此， NAS 应该要能满足我挂 BT 下载的需求，并且还要能够直接读取 BT 下载的内容，以家庭影院的形式展现。经过筛选，我选择安装以下 Docker 软件  Transmission （BT 下载，Web UI 控制） Plex Media Server （家庭影院） Pi-Hole （DNS 广告过">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 LaTeX 完成你的毕业论文">
-<meta property="og:url" content="https://wasteland.touko.moe/blog/2020/03/write-thesis-with-latex/index.html">
+<meta property="og:title" content="家庭网络管理(3): UNRAID 安装黑群晖和其他常用软件">
+<meta property="og:url" content="https://wasteland.touko.moe/blog/2020/06/home-network-3-hack-synology-and-more/index.html">
 <meta property="og:site_name" content="Wasteland">
-<meta property="og:description" content="本文使用 武汉大学 毕业论文模板。 准备写论文可喜可贺，我终于要开始动笔我的毕业论文了。虽然论文相关的实验和理论准备已经就绪了很长一段时间，但是就是提不起精神写文章。这周其他突发堆积的事情逐渐清空，我准备忙里偷闲，开始写毕业论文。 某天，一同学在群里发了一份 武汉大学毕业论文 LaTeX 模板，我一看，巧了，老朋友写的 repository ，于是正好近期开工，把它下载下来用。 环境配置 本文基础">
+<meta property="og:description" content="NAS 该用来做什么我打算将 NAS 定位为一个家庭用的小型多媒体平台，并作为软路由处理流量。因此， NAS 应该要能满足我挂 BT 下载的需求，并且还要能够直接读取 BT 下载的内容，以家庭影院的形式展现。经过筛选，我选择安装以下 Docker 软件  Transmission （BT 下载，Web UI 控制） Plex Media Server （家庭影院） Pi-Hole （DNS 广告过">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://wasteland.touko.moe/blog/2020/03/write-thesis-with-latex/Install-for-current-user.jpg">
-<meta property="og:image" content="https://wasteland.touko.moe/blog/2020/03/write-thesis-with-latex/Change-TeX-mirror.jpg">
-<meta property="og:image" content="https://wasteland.touko.moe/blog/2020/03/write-thesis-with-latex/Change-ps-to-UTF8.jpg">
-<meta property="article:published_time" content="2020-03-17T06:02:47.000Z">
-<meta property="article:modified_time" content="2020-06-04T13:43:20.745Z">
+<meta property="article:published_time" content="2020-06-12T01:28:27.000Z">
+<meta property="article:modified_time" content="2020-06-12T06:50:00.144Z">
 <meta property="article:author" content="Touko Hoshino">
-<meta property="article:tag" content="LaTeX">
-<meta property="article:tag" content="Paper">
-<meta property="article:tag" content="Thesis">
+<meta property="article:tag" content="NAS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://wasteland.touko.moe/blog/2020/03/write-thesis-with-latex/Install-for-current-user.jpg">
 
-<link rel="canonical" href="https://wasteland.touko.moe/blog/2020/03/write-thesis-with-latex/">
+<link rel="canonical" href="https://wasteland.touko.moe/blog/2020/06/home-network-3-hack-synology-and-more/">
 
 
 <script id="page-configurations">
@@ -56,7 +50,7 @@
   };
 </script>
 
-  <title>使用 LaTeX 完成你的毕业论文 | Wasteland</title>
+  <title>家庭网络管理(3): UNRAID 安装黑群晖和其他常用软件 | Wasteland</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68278825-5"></script>
     <script pjax>
@@ -221,7 +215,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="https://wasteland.touko.moe/blog/2020/03/write-thesis-with-latex/">
+    <link itemprop="mainEntityOfPage" href="https://wasteland.touko.moe/blog/2020/06/home-network-3-hack-synology-and-more/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -234,7 +228,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          使用 LaTeX 完成你的毕业论文
+          家庭网络管理(3): UNRAID 安装黑群晖和其他常用软件
         </h1>
 
         <div class="post-meta">
@@ -243,23 +237,21 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-03-17 14:02:47" itemprop="dateCreated datePublished" datetime="2020-03-17T14:02:47+08:00">2020-03-17</time>
+              <time title="Created: 2020-06-12 09:28:27 / Modified: 14:50:00" itemprop="dateCreated datePublished" datetime="2020-06-12T09:28:27+08:00">2020-06-12</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-04 21:43:20" itemprop="dateModified" datetime="2020-06-04T21:43:20+08:00">2020-06-04</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Talk/" itemprop="url" rel="index"><span itemprop="name">Talk</span></a>
+                  <a href="/categories/Network/" itemprop="url" rel="index"><span itemprop="name">Network</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NAS/" itemprop="url" rel="index"><span itemprop="name">NAS</span></a>
                 </span>
             </span>
 
@@ -281,54 +273,108 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>本文使用 <strong>武汉大学</strong> 毕业论文模板。</p>
-<h1 id="准备写论文"><a href="#准备写论文" class="headerlink" title="准备写论文"></a>准备写论文</h1><p>可喜可贺，我终于要开始动笔我的毕业论文了。虽然论文相关的实验和理论准备已经就绪了很长一段时间，但是就是提不起精神写文章。这周其他突发堆积的事情逐渐清空，我准备忙里偷闲，开始写毕业论文。</p>
-<p>某天，一同学在群里发了一份 <a href="https://github.com/mtobeiyf/whu-thesis/" target="_blank" rel="noopener">武汉大学毕业论文 LaTeX 模板</a>，我一看，巧了，老朋友写的 <code>repository</code> ，于是正好近期开工，把它下载下来用。</p>
-<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><blockquote>
-<p>本文基础环境是 Windows 10，使用的 IDE 为 <strong>VSCode</strong>，Linux、Mac 配置方式类似</p>
-</blockquote>
-<h2 id="Perl"><a href="#Perl" class="headerlink" title="Perl"></a>Perl</h2><p>首先我们需要安装 Windows 下的 <code>Perl</code> 依赖。前往官网 <a href="https://www.perl.org/get.html" target="_blank" rel="noopener">https://www.perl.org/get.html</a> 我发现，有 <code>ActiveState Perl</code> 和 <code>Strawberry Perl</code> 两种版本的 <code>Perl</code> ，具体使用起来差不多，所以我选择了下载起来相对方便的 <code>草莓 Perl</code> <a href="http://strawberryperl.com/" target="_blank" rel="noopener">http://strawberryperl.com/</a> 。</p>
-<h2 id="LaTeX"><a href="#LaTeX" class="headerlink" title="LaTeX"></a>LaTeX</h2><p>Windows 下有两种广泛使用的 LaTeX 版本，分别是 <code>TeX Live</code> 和 <code>MiKTeX</code> 。 <code>TeX Live</code> 安装体积高达 <strong>6GB</strong> ，我立刻放弃，选择了安装体积较小，后续使用中<strong>按需下载</strong>的 <code>MiKTeX</code> <a href="https://miktex.org/download" target="_blank" rel="noopener">https://miktex.org/download</a> 。建议在安装时安装给<strong>当前用户</strong>，可以避免很多麻烦。</p>
+        <h1 id="NAS-该用来做什么"><a href="#NAS-该用来做什么" class="headerlink" title="NAS 该用来做什么"></a>NAS 该用来做什么</h1><p>我打算将 NAS 定位为一个家庭用的小型多媒体平台，并作为软路由处理流量。因此， NAS 应该要能满足我挂 BT 下载的需求，并且还要能够直接读取 BT 下载的内容，以家庭影院的形式展现。经过筛选，我选择安装以下 Docker 软件</p>
+<ul>
+<li>Transmission （BT 下载，Web UI 控制）</li>
+<li>Plex Media Server （家庭影院）</li>
+<li>Pi-Hole （DNS 广告过滤和自定义 Host）</li>
+<li>V2Ray （公网访问内网，等于 VPN）</li>
+<li>NginX （统一反代 Web UI，管理端口暴露规则）</li>
+</ul>
+<p>以及，感谢 UNRAID 对 kvm 的良好支持，我还安装了</p>
+<ul>
+<li>黑群晖</li>
+</ul>
+<h1 id="黑群晖"><a href="#黑群晖" class="headerlink" title="黑群晖"></a>黑群晖</h1><p>群晖是一个卖软件的 NAS 硬件商，其软件十分好用，新手友好。自然，我先选择安装破解的群晖系统。实际上，装完群晖后，我几乎没有使用里面的功能，因为我还是比较倾向于用 UNRAID 自带的 Docker 完成我需要的服务。不过我在研究黑群晖安装的过程中，学习了一些经验，这里做一下记录。</p>
+<h2 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h2>
+
+<p>安装黑群晖的原理是安装一个第三方的、破解后的引导，来欺骗群晖系统镜像正常工作。因此我们需要下载破解的引导作为启动盘，然后去官方网站上下载安装镜像就可以了。破解的引导我推荐在 <a href="https://xpenology.club/downloads/" target="_blank" rel="noopener">https://xpenology.club/downloads/</a> 下载。网站中 DSM 6.2指的是支持 <code>DSM 6.2</code> 的系统，引导的文件名最后一串为群晖的机型。在安装时注意下载对应系统和机型的镜像。可以在 <a href="https://archive.synology.com/download/DSM/" target="_blank" rel="noopener">https://archive.synology.com/download/DSM/</a> 下载。</p>
+<p>由于我的虚拟机无法正常启动 <code>Jun’s Loader v1.04b DS918+</code> ，这里以 <code>Jun’s Loaders DSM 6.2</code> - <code>Jun’s Loader v1.03b DS3617xs</code> 为例。下载对应引导并解压，将引导拷贝至 NAS。我创建了一个共享文件夹 HackSynology 用于放置群晖相关文件。</p>
 <a id="more"></a>
 
-<img src="/blog/2020/03/write-thesis-with-latex/Install-for-current-user.jpg" class="" title="Install for current user">
 
-<p>同时，我们需要手工指定镜像。根据我的使用情况， <code>HIT</code> 的源中包含了很多不可用的文件，会拖慢下载速度。打开 <code>MiKTeX</code> 客户端，进入 <code>Settings</code> - <code>General</code> - <code>Package Installation</code> 更换源。推荐更换为 <code>清华源</code> 。</p>
-<img src="/blog/2020/03/write-thesis-with-latex/Change-TeX-mirror.jpg" class="" title="Change TeX mirror">
 
-<h2 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h2><p>首先需要在 VSCode 中安装依赖 <code>LaTeX Workshop</code> 。</p>
-<p>VSCode 的配置文件在上述模板中包含。但是我建议对配置文件进行一定的修改，使用更方便的安装命令。并将工程和 pdf 文件构建于 <code>build/</code> 文件夹下，保持根目录干净。</p>
-<p>可以在 <a href="https://gist.github.com/HoshinoTouko/a2332b1756996d5e9c71605d0ff7591a" target="_blank" rel="noopener">https://gist.github.com/HoshinoTouko/a2332b1756996d5e9c71605d0ff7591a</a> 获取 <code>.vscode/settings.json</code> 和 <code>.latexmkrc</code> ，下载后放置于对应目录即可工作。</p>
-<h2 id="手工执行"><a href="#手工执行" class="headerlink" title="手工执行"></a>手工执行</h2><p>也可以通过手工执行的方式对工程进行编译。下载上文的 <code>.latexmkrc</code> 放置于根目录，如果无法访问 gist ，也可以复制下方文件。然后确认自己的 <code>PowerShell</code> 工作于 <code>UTF-8</code> 编码下。确认 <code>PowerShell</code> 编码可以执行 <code>chcp</code> 命令。</p>
-<figure class="highlight plain"><figcaption><span>.latexmkrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$pdflatex&#x3D;q&#x2F;xelatex -synctex&#x3D;1 %O %S&#x2F;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight ps"><figcaption><span>确认 PowerShell 编码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Research\undergraduate<span class="literal">-thesis</span>&gt; chcp</span><br><span class="line">Active code page: <span class="number">65001</span></span><br></pre></td></tr></table></figure>
 
-<p>如果 <code>Active code page</code> 是 65001 ，则该 PowerShell 运行于 <code>UTF-8</code> 编码下。如果不是，执行 <code>chcp 65001</code> 即可。如需更改默认 PowerShell 编码，可以通过以下方式。</p>
-<img src="/blog/2020/03/write-thesis-with-latex/Change-ps-to-UTF8.jpg" class="" title="Change ps to utf-8">
+<p>然后到群晖官网，下载对应的系统镜像。在此处样例中，我下载了 <code>DSM_DS3617xs_23739.pat</code> 文件。将这两个文件准备好，就可以开始安装黑群晖了。</p>
 
-<p>执行 </p>
-<figure class="highlight ps"><figcaption><span>使用 latexmk 调用 xelatex 编译 LaTeX 文档</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">latexmk <span class="literal">-xelatex</span> <span class="literal">-pdf</span> <span class="literal">-synctex</span>=<span class="number">1</span> <span class="literal">-interaction</span>=nonstopmode <span class="operator">-file</span><span class="literal">-line</span><span class="literal">-error</span> <span class="literal">-shell</span><span class="literal">-escape</span> <span class="literal">-outdir</span>=build ./main</span><br></pre></td></tr></table></figure>
 
-<p>即可在 <code>build/</code> 文件夹下完成工程构建。</p>
-<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>其实我本来是想用 <code>overleaf</code> 的，但是觉得学位论文这种东西，在线保存有一定风险，还是握在自己手里比较好。所以我就捣鼓了几个小时，把环境都部署好跑起来了。本文提供的样例是武汉大学的，在 GitHub 或者 Google 根据关键词搜索，即可找到别的学校的同学制作的相关模板。例如</p>
+<h2 id="创建虚拟机"><a href="#创建虚拟机" class="headerlink" title="创建虚拟机"></a>创建虚拟机</h2>
+
+<p>创建一个 Linux 虚拟机，命名，选择直通的 CPU 核心。UNRAID 的这点我很喜欢，它能够手动指定虚拟机使用其中的某几个核心，避免虚拟机大量占用资源。这里我选择了 CPU 1 作为黑群晖的核心。RAM 1-2GB 就够了。由于兼容性问题，此处需要选择 <code>i440fx-4.2</code> 和 <code>Sea-BIOS</code> 。</p>
+
+
+<p>启动引导和挂载硬盘如图所示设置。其中挂载硬盘的大小可以按照个人喜好修改，总线填写 <code>SATA</code>，类型为 <code>qcow2</code> ，这样动态分配空间，不需要创建硬盘时就占用对应容量。主硬盘指向下载的破解启动引导，总线类型为 USB。</p>
+
+
+<p>网卡随意，手动关闭最下方的 <code>Start VM atfer creation</code> 并保存。</p>
+
+
+
+
+<p>重新进入编辑页面，点击右上方的 <code>FORM VIEW</code> ，转为 <code>XML VIEW</code> ，搜索 <code>&lt;model type=</code> ，将虚拟网卡型号修改为 <code>e1000</code> 或 <code>vmxnet3</code> （理论性能更佳，未验证）。</p>
+
+
+<p>此时可以保存，启动机器。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2>
+
+<p>如果一切正常，VNC 中可以看到上方的情况。此时可以打开 <a href="http://find.synology.com/" target="_blank" rel="noopener">http://find.synology.com/</a> ，搜索内网的群晖新机器地址。如果找不到，可能需要从 <a href="https://www.synology.com/en-global/support/download" target="_blank" rel="noopener">https://www.synology.com/en-global/support/download</a> 下载 Synology Assistant 进一步寻找。</p>
+
+
+
+
+<p>正常进行安装流程。当需要安装系统镜像时，选择手动安装，上传从官网下载的系统镜像。一定要保证版本和机型对应。如果无法安装系统镜像，首先检查版本是否正确，如果都没问题，可以考虑更换破解引导的版本。我一开始测试的是 <code>DS918+</code> 机型的破解引导，后来发现不能工作，于是更换了现在的 <code>DS3617xs</code> 。</p>
+
+
+<p>安装完成后，如果 Web 界面显示重启，黑群晖就成功以虚拟机的形式被安装了。之后进入群晖系统，进行初期配置。群晖的交互足够用户友好，不存在什么困难，这里就不再赘述。</p>
+
+
+<h1 id="其他-Docker-应用"><a href="#其他-Docker-应用" class="headerlink" title="其他 Docker 应用"></a>其他 Docker 应用</h1><h2 id="Transmission-with-web-UI"><a href="#Transmission-with-web-UI" class="headerlink" title="Transmission (with web UI)"></a>Transmission (with web UI)</h2>
+
+<p>Transmission 的安装很容易。进入 Apps 搜索 Transmission，找到作者是 linuxserver 的，下载即可。我简单提供一份配置样本。</p>
+
+
+<p>9091 端口是 Transmission 的 Web UI，/downloads 是默认下载文件夹，其他按照默认配置就好。值得一提的是，我额外增加了一个参数 <code>TRANSMISSION_WEB_HOME</code> ，设置为 <code>/transmission-web-control/</code> ，这是一个自带的 Web 界面美化插件，类似一个主题，添加 Variable 变量即可。</p>
+
+
+<p>安装完成后，可以从 Docker - Transmission 进入 Web UI，添加下载或是管理做种了。</p>
+<h2 id="PLEX"><a href="#PLEX" class="headerlink" title="PLEX"></a>PLEX</h2><h3 id="主程序安装"><a href="#主程序安装" class="headerlink" title="主程序安装"></a>主程序安装</h3>
+
+<p>PLEX 在 Apps 中自带官方打包好的版本，直接安装即可。</p>
+
+
+<p>设置可以参考上图。其中 <code>Key 1: PLEX_CLAIM</code> 需要在官网 <a href="https://www.plex.tv/" target="_blank" rel="noopener">https://www.plex.tv/</a> 注册后，进入 <a href="https://plex.tv/claim" target="_blank" rel="noopener">https://plex.tv/claim</a> 申请。PLEX Claim ID 有效期很短，申请后建议立刻启动服务器，进入 Web UI 界面完成绑定流程。失效了也没有关系，重新进入 claim 页面申请、重新填写 Docker 设置中的变量就可以了。</p>
+<p>值得一提的是，为了将 Transmission 下载的内容直接导入 PLEX ，我将 Transmission 下载文件夹对应的宿主机文件夹同时挂载在 PLEX 对应的数据文件夹下。可以参考设置中最后一项 <code>Transmission Share:</code> 。这样一来，当 Transmission 完成下载，就不需要手动将媒体文件移动至 PLEX 数据文件夹中。</p>
+<h3 id="PLEX-AniDB-插件"><a href="#PLEX-AniDB-插件" class="headerlink" title="PLEX AniDB 插件"></a>PLEX AniDB 插件</h3><p>PLEX 自带的刮削器大多是欧美电影 / 电视节目的资料，较少包含动画的信息。这个问题可以通过安装第三方插件解决。这里推荐 Hama.bundle，安装方式参考 README - Installation (<a href="https://github.com/ZeroQI/Hama.bundle#installation)，这里不赘述。" target="_blank" rel="noopener">https://github.com/ZeroQI/Hama.bundle#installation)，这里不赘述。</a></p>
+<blockquote>
 <ul>
-<li>浙江大学毕业设计/论文 LaTeX 模板 - <a href="https://github.com/TheNetAdmin/zjuthesis" target="_blank" rel="noopener">https://github.com/TheNetAdmin/zjuthesis</a><br>包含本科生、硕士生与博士生模板，以及英文硕博士模板</li>
-<li>Tsinghua University Thesis LaTeX Template - <a href="https://github.com/xueruini/thuthesis" target="_blank" rel="noopener">https://github.com/xueruini/thuthesis</a></li>
-<li>fduthesis - <a href="https://github.com/stone-zeng/fduthesis" target="_blank" rel="noopener">https://github.com/stone-zeng/fduthesis</a></li>
-<li>上海交通大学 XeLaTeX 学位论文及课程论文模板 - <a href="https://github.com/sjtug/SJTUThesis" target="_blank" rel="noopener">https://github.com/sjtug/SJTUThesis</a></li>
-<li>…</li>
+<li>“Scanners”         “Scanners/Series” folder needs creating. Absolute series Scanner.py” goes inside. <pre><code>https://raw.githubusercontent.com/ZeroQI/Absolute-Series-Scanner/master/Scanners/Series/Absolute%20Series%20Scanner.py</code></pre></li>
+<li>“Plug-ins”         <a href="https://github.com/ZeroQI/Hama.bundle" target="_blank" rel="noopener">https://github.com/ZeroQI/Hama.bundle</a> &gt; “Clone or download &gt; Download Zip. Copy Hama.bundle-master.zip\Hama.bundle-master in plug-ins folders but rename to “Hama.bundle” (remove -master) </li>
 </ul>
-<p>希望大家度过一个特殊又充实的毕业论文假期</p>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
-<li>武汉大学毕业论文 LaTeX 模版 2019 - <a href="https://github.com/mtobeiyf/whu-thesis" target="_blank" rel="noopener">https://github.com/mtobeiyf/whu-thesis</a></li>
-<li>How to make LaTeXmk work with XeLaTeX and biber - <a href="https://tex.stackexchange.com/questions/27450/how-to-make-latexmk-work-with-xelatex-and-biber" target="_blank" rel="noopener">https://tex.stackexchange.com/questions/27450/how-to-make-latexmk-work-with-xelatex-and-biber</a></li>
-<li>Using Latexmk - <a href="https://mg.readthedocs.io/latexmk.html" target="_blank" rel="noopener">https://mg.readthedocs.io/latexmk.html</a></li>
-<li>How do I run bibtex after using the -output-directory flag with pdflatex, when files are included from subdirectories? - <a href="https://tex.stackexchange.com/questions/12686/how-do-i-run-bibtex-after-using-the-output-directory-flag-with-pdflatex-when-f" target="_blank" rel="noopener">https://tex.stackexchange.com/questions/12686/how-do-i-run-bibtex-after-using-the-output-directory-flag-with-pdflatex-when-f</a></li>
-<li>CTAN 镜像使用帮助 - <a href="https://mirror.tuna.tsinghua.edu.cn/help/CTAN/" target="_blank" rel="noopener">https://mirror.tuna.tsinghua.edu.cn/help/CTAN/</a></li>
-<li>LaTeX-Workshop GitHub - <a href="https://github.com/James-Yu/LaTeX-Workshop" target="_blank" rel="noopener">https://github.com/James-Yu/LaTeX-Workshop</a></li>
+</blockquote>
+<ul>
+<li><a href="https://github.com/ZeroQI/Hama.bundle" target="_blank" rel="noopener">https://github.com/ZeroQI/Hama.bundle</a></li>
+<li><a href="https://github.com/ZeroQI/Absolute-Series-Scanner/" target="_blank" rel="noopener">https://github.com/ZeroQI/Absolute-Series-Scanner/</a></li>
 </ul>
-<p>———— <br/>License: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">BY-NC-SA 4.0</a> <br/>Link:  <a href="https://wasteland.touko.moe//blog/2020/03/write-thesis-with-latex/">https://wasteland.touko.moe//blog/2020/03/write-thesis-with-latex/</a> <br/>Written with <strong>Passion</strong> and <strong>Hope</strong></p>
+<h2 id="Pi-Hole"><a href="#Pi-Hole" class="headerlink" title="Pi-Hole"></a>Pi-Hole</h2>
+
+<p>这是一个通过污染 DNS 解析来封锁广告的工具，也可以直接在官方的 Apps 中下载到。配置流程按照官方提供的模板微调配置即可。建议通过网桥接入，自定义一个 IP 地址。注意 Docker 设置的 IP 地址要和模板后半部分设置的 ServerIP 相同。面板的密码 <code>WEBPASSWORD</code> 可以随便写一个，在程序运行后，进入 Docker 命令行，运行命令 <code>pi-hole password</code> 重置密码。</p>
+<p>在后期修改配置的过程中，我改动了 Pi-Hole 的 IP 地址导致面板无法正常访问。此时也可以通过进入 Docker 的 Pi-Hole 命令行，运行 <code>sudo pihole -a -p</code> 重新配置程序。</p>
+
+
+<p>如果有想使用域名访问 Pi-Hole 的需求，可以参考这篇文章。我还没有测试，不过看起来 it works。</p>
+<ul>
+<li><a href="https://discourse.pi-hole.net/t/how-to-enable-remote-internet-access-for-pi-hole-web-dashboard/7025" target="_blank" rel="noopener">https://discourse.pi-hole.net/t/how-to-enable-remote-internet-access-for-pi-hole-web-dashboard/7025</a></li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>关于 Nginx 和 V2Ray 的安装，主要是用于改善我个人体验和远程访问内网需求的。这些软件安装和其他平台无异。关于用法和安装过程，我会在之后的文章介绍。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href="https://www.reddit.com/r/unRAID/comments/7sf0hg/use_your_unraid_box_as_an_ad_blocking_dns_server/" target="_blank" rel="noopener">https://www.reddit.com/r/unRAID/comments/7sf0hg/use_your_unraid_box_as_an_ad_blocking_dns_server/</a></li>
+<li><a href="https://forums.plex.tv/t/how-do-you-install-the-official-plex-for-unraid/206596" target="_blank" rel="noopener">https://forums.plex.tv/t/how-do-you-install-the-official-plex-for-unraid/206596</a></li>
+<li><a href="https://support.plex.tv/articles/200264746-quick-start-step-by-step-guides/" target="_blank" rel="noopener">https://support.plex.tv/articles/200264746-quick-start-step-by-step-guides/</a></li>
+<li><a href="https://support.plex.tv/articles/201373823-nas-devices-and-limitations/" target="_blank" rel="noopener">https://support.plex.tv/articles/201373823-nas-devices-and-limitations/</a></li>
+<li><a href="https://handlers.sans.edu/gbruneau/pihole.htm" target="_blank" rel="noopener">https://handlers.sans.edu/gbruneau/pihole.htm</a></li>
+</ul>
+<p>———— <br/>License: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">BY-NC-SA 4.0</a> <br/>Link:  <a href="https://wasteland.touko.moe//blog/2020/06/home-network-3-hack-synology-and-more/">https://wasteland.touko.moe//blog/2020/06/home-network-3-hack-synology-and-more/</a> <br/>Written with <strong>Passion</strong> and <strong>Hope</strong></p>
 
     </div>
 
@@ -377,9 +423,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/LaTeX/" rel="tag"># LaTeX</a>
-              <a href="/tags/Paper/" rel="tag"># Paper</a>
-              <a href="/tags/Thesis/" rel="tag"># Thesis</a>
+              <a href="/tags/NAS/" rel="tag"># NAS</a>
           </div>
 
         
@@ -388,13 +432,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2020/03/blkio-debug/" rel="prev" title="Docker 限制磁盘 IO 无效排错及总结">
-      <i class="fa fa-chevron-left"></i> Docker 限制磁盘 IO 无效排错及总结
+    <a href="/blog/2020/06/home-network-2-enjoy-with-UNRAID/" rel="prev" title="家庭网络管理(2): 部署和使用 UNRAID">
+      <i class="fa fa-chevron-left"></i> 家庭网络管理(2): 部署和使用 UNRAID
     </a></div>
-      <div class="post-nav-item">
-    <a href="/blog/2020/04/intranet-cluster-management/" rel="next" title="优雅地管理内网集群">
-      优雅地管理内网集群 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -474,7 +515,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备写论文"><span class="nav-number">1.</span> <span class="nav-text">准备写论文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境配置"><span class="nav-number">2.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Perl"><span class="nav-number">2.1.</span> <span class="nav-text">Perl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LaTeX"><span class="nav-number">2.2.</span> <span class="nav-text">LaTeX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VSCode"><span class="nav-number">2.3.</span> <span class="nav-text">VSCode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手工执行"><span class="nav-number">2.4.</span> <span class="nav-text">手工执行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写在最后"><span class="nav-number">3.</span> <span class="nav-text">写在最后</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NAS-该用来做什么"><span class="nav-number">1.</span> <span class="nav-text">NAS 该用来做什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#黑群晖"><span class="nav-number">2.</span> <span class="nav-text">黑群晖</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装准备"><span class="nav-number">2.1.</span> <span class="nav-text">安装准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建虚拟机"><span class="nav-number">2.2.</span> <span class="nav-text">创建虚拟机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.3.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他-Docker-应用"><span class="nav-number">3.</span> <span class="nav-text">其他 Docker 应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Transmission-with-web-UI"><span class="nav-number">3.1.</span> <span class="nav-text">Transmission (with web UI)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PLEX"><span class="nav-number">3.2.</span> <span class="nav-text">PLEX</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主程序安装"><span class="nav-number">3.2.1.</span> <span class="nav-text">主程序安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PLEX-AniDB-插件"><span class="nav-number">3.2.2.</span> <span class="nav-text">PLEX AniDB 插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pi-Hole"><span class="nav-number">3.3.</span> <span class="nav-text">Pi-Hole</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">3.4.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -726,16 +767,16 @@ window.addEventListener('pjax:success', () => {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://wasteland.touko.moe/blog/2020/03/write-thesis-with-latex/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://wasteland.touko.moe/blog/2020/06/home-network-3-hack-synology-and-more/',]
       });
       });
   </script>
 
 <script>
   var disqus_config = function() {
-    this.page.url = "https://wasteland.touko.moe/blog/2020/03/write-thesis-with-latex/";
-    this.page.identifier = "/blog/2020/03/write-thesis-with-latex/";
-    this.page.title = "使用 LaTeX 完成你的毕业论文";
+    this.page.url = "https://wasteland.touko.moe/blog/2020/06/home-network-3-hack-synology-and-more/";
+    this.page.identifier = "/blog/2020/06/home-network-3-hack-synology-and-more/";
+    this.page.title = "家庭网络管理(3): UNRAID 安装黑群晖和其他常用软件";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
@@ -763,7 +804,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'gitalk-wasteland',
       owner       : 'HoshinoTouko',
       admin       : ['HoshinoTouko'],
-      id          : '5262a5dd6f2b7adf210d762b73f3cba8',
+      id          : 'c97bbf46ca796127b91eda73dbfda875',
         language: '',
       distractionFreeMode: true
     });
