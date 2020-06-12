@@ -11,6 +11,8 @@
 <p>截至目前，最新的破解版是 <code>UNRAID 6.8.2</code> ，下载地址在 <a href="http://www.hopol.cn/2020/06/1675/" target="_blank" rel="noopener">http://www.hopol.cn/2020/06/1675/</a> 。这个安装包自带密钥计算工具，可以使用 <a href="https://koolshare.cn/thread-181253-1-1.html" target="_blank" rel="noopener">https://koolshare.cn/thread-181253-1-1.html</a> 提供的一键安装工具进行安装；或者按照破解版下载页面的安装方法设置 UNRAID U 盘 启动，然后再回到 Windows 进行破解密钥生成。</p>
 <h1 id="初期配置"><a href="#初期配置" class="headerlink" title="初期配置"></a>初期配置</h1><h2 id="点亮"><a href="#点亮" class="headerlink" title="点亮"></a>点亮</h2><p>先将显示器接上运行 UNRAID 的机器。在开机启动时，狂按 Del 进入 BIOS 配置页面，修改默认主板设置。我先修改默认启动引导至装有 UNRAID 系统的 U 盘上，然后打开了 CPU 的虚拟化功能（VT-d），F10 保存重启。</p>
 <p>启动选项选择 <code>Unraid OS (Headless)</code> 。如果正常启动，在命令行可以看到 UNRAID 被分配到的 IP 地址。通过 Web 访问即可。默认账户为 root ，无密码。</p>
+<a id="more"></a>
+
 <h2 id="配置网络"><a href="#配置网络" class="headerlink" title="配置网络"></a>配置网络</h2><img src="/blog/2020/06/home-network-2-enjoy-with-UNRAID/unraid-network-settings.png" class="" title="UNRAID 静态 IP 配置">
 
 <p>第一步需要配置网络，保证机器使用固定的 IP 地址。在阵列停止的情况下，进入 SETTINGS - Network Settings 配置网络。为了让 IP 不发生变化，建议给 UNRAID 设置一个静态 IP，网关指向当前主路由。由于目前我的网络没有运行 IPv6 服务，故没有设置 v6 地址。</p>
@@ -772,8 +774,8 @@
       <categories>
         <category>Web</category>
         <category>Frontend</category>
-        <category>Blog</category>
         <category>Talk</category>
+        <category>Blog</category>
       </categories>
       <tags>
         <tag>Hexo</tag>
