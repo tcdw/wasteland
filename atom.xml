@@ -60,7 +60,7 @@
     <link href="https://wasteland.touko.moe/blog/2020/06/home-network-2-enjoy-with-UNRAID/"/>
     <id>https://wasteland.touko.moe/blog/2020/06/home-network-2-enjoy-with-UNRAID/</id>
     <published>2020-06-08T08:17:07.000Z</published>
-    <updated>2020-06-12T10:10:22.244Z</updated>
+    <updated>2020-06-12T15:54:26.317Z</updated>
     
     <summary type="html">
     
@@ -380,9 +380,9 @@
     
       <category term="Web" scheme="https://wasteland.touko.moe/categories/Web/"/>
     
-      <category term="Talk" scheme="https://wasteland.touko.moe/categories/Talk/"/>
-    
       <category term="Frontend" scheme="https://wasteland.touko.moe/categories/Web/Frontend/"/>
+    
+      <category term="Talk" scheme="https://wasteland.touko.moe/categories/Talk/"/>
     
       <category term="Blog" scheme="https://wasteland.touko.moe/categories/Blog/"/>
     
@@ -410,7 +410,7 @@
       
         
         
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot;
+          
         
       
     

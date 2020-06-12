@@ -171,6 +171,7 @@
 <h1 id="其他调整"><a href="#其他调整" class="headerlink" title="其他调整"></a>其他调整</h1><h2 id="更换-Docker-镜像"><a href="#更换-Docker-镜像" class="headerlink" title="更换 Docker 镜像"></a>更换 Docker 镜像</h2><p>由于 UNRAID 对 Docker 生态有较大的依赖，很多 Docker 应用都可以和 UNRAID 协同工作。需要更换 Docker 国内镜像，以达到较好的使用体验。这里推荐阿里云的 Docker 镜像加速器，访问 <a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors" target="_blank" rel="noopener">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</a> 就可以申请。拿到自己的 Docker 镜像加速器地址后，在 Web Terminal 中执行以下命令对 Docker 源进行更换。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-<span class="string">'EOF'</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [<span class="string">"https://&#123;YOUR_DOCKER_MIRROR_ID&#125;.mirror.aliyuncs.com"</span>]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 
+<p>为了在每次重启时自动应用配置，建议将其写入 <code>\flash\config\go</code> 中。其中 <code>\flash</code> 指装有 UNRAID 的 U 盘根目录。</p>
 <h2 id="允许-Docker-虚拟机访问宿主机"><a href="#允许-Docker-虚拟机访问宿主机" class="headerlink" title="允许 Docker 虚拟机访问宿主机"></a>允许 Docker 虚拟机访问宿主机</h2><p>由于 Docker 的网络隔离，有时候我想进行一些特殊的操作就比较困难。比如我将所有的服务用一个 NginX 反代，但是使用 <code>Host</code> 或者 <code>Bridge</code> 方式暴露端口在宿主机上的服务就无法被反代。因此，我需要手工修改 UNRAID 的 Docker 设置。进入 <code>Settings</code> - <code>Docker</code> ，点击右上方的 <code>Basic View</code> ，切换成 <code>Advanced View</code> ，然后修改对应选项即可。这么做存在一定风险。我认真检查防火墙，保证外网的访问能够安全地被处理后，才进行这个操作。</p>
 <img src="/blog/2020/06/home-network-2-enjoy-with-UNRAID/docker-host-access-to-custom-networks.png" class="" title="Unassigned Devices">
 
@@ -888,8 +889,8 @@
 ]]></content>
       <categories>
         <category>Web</category>
-        <category>Talk</category>
         <category>Frontend</category>
+        <category>Talk</category>
         <category>Blog</category>
       </categories>
       <tags>
