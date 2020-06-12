@@ -1,6 +1,6 @@
 ---
 title: '家庭网络管理(3): UNRAID 安装黑群晖和其他常用软件'
-date: 2020-06-12 09:28:27
+date: 2020-06-10 09:28:27
 categories:
 - [Network]
 - [NAS]
@@ -28,7 +28,7 @@ tags:
 
 ## 安装准备
 
-{% asset_img hacksyno/xpenology-download.png XPENOLOGY 黑群晖引导 %}
+{% asset_img xpenology-download.png XPENOLOGY 黑群晖引导 %}
 
 安装黑群晖的原理是安装一个第三方的、破解后的引导，来欺骗群晖系统镜像正常工作。因此我们需要下载破解的引导作为启动盘，然后去官方网站上下载安装镜像就可以了。破解的引导我推荐在 https://xpenology.club/downloads/ 下载。网站中 DSM 6.2指的是支持 `DSM 6.2` 的系统，引导的文件名最后一串为群晖的机型。在安装时注意下载对应系统和机型的镜像。可以在 https://archive.synology.com/download/DSM/ 下载。
 
@@ -36,17 +36,17 @@ tags:
 
 <!--more-->
 
-{% asset_img hacksyno/creat-share.png XPENOLOGY 创建共享目录 %}
+{% asset_img creat-share.png XPENOLOGY 创建共享目录 %}
 
-{% asset_img hacksyno/xpenology-boot.png XPENOLOGY 黑群晖引导文件 %}
+{% asset_img xpenology-boot.png XPENOLOGY 黑群晖引导文件 %}
 
 然后到群晖官网，下载对应的系统镜像。在此处样例中，我下载了 `DSM_DS3617xs_23739.pat` 文件。将这两个文件准备好，就可以开始安装黑群晖了。
 
-{% asset_img hacksyno/dsm-download.png 群晖官方系统镜像 %}
+{% asset_img dsm-download.png 群晖官方系统镜像 %}
 
 ## 创建虚拟机
 
-{% asset_img hacksyno/vm-and-bios.png 创建 Linux 虚拟机，设置 BIOS %}
+{% asset_img vm-and-bios.png 创建 Linux 虚拟机，设置 BIOS %}
 
 创建一个 Linux 虚拟机，命名，选择直通的 CPU 核心。UNRAID 的这点我很喜欢，它能够手动指定虚拟机使用其中的某几个核心，避免虚拟机大量占用资源。这里我选择了 CPU 1 作为黑群晖的核心。RAM 1-2GB 就够了。由于兼容性问题，此处需要选择 `i440fx-4.2` 和 `Sea-BIOS` 。
 
@@ -118,7 +118,7 @@ PLEX 在 Apps 中自带官方打包好的版本，直接安装即可。
 
 ### PLEX AniDB 插件
 
-PLEX 自带的刮削器大多是欧美电影 / 电视节目的资料，较少包含动画的信息。这个问题可以通过安装第三方插件解决。这里推荐 Hama.bundle，安装方式参考 README - Installation (https://github.com/ZeroQI/Hama.bundle#installation)，这里不赘述。
+PLEX 自带的刮削器大多是欧美电影 / 电视节目的资料，较少包含动画的信息。这个问题可以通过安装第三方插件解决。这里推荐 Hama.bundle，安装方式参考 README - Installation https://github.com/ZeroQI/Hama.bundle#installation ，这里不赘述。
 
 > * "Scanners"         "Scanners/Series" folder needs creating. Absolute series Scanner.py" goes inside. 
 >			 https://raw.githubusercontent.com/ZeroQI/Absolute-Series-Scanner/master/Scanners/Series/Absolute%20Series%20Scanner.py
