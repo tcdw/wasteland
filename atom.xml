@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wasteland.touko.moe/"/>
-  <updated>2020-06-12T06:50:00.144Z</updated>
+  <updated>2020-06-12T06:22:36.597Z</updated>
   <id>https://wasteland.touko.moe/</id>
   
   <author>
@@ -15,45 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>家庭网络管理(3): UNRAID 安装黑群晖和其他常用软件</title>
-    <link href="https://wasteland.touko.moe/blog/2020/06/home-network-3-hack-synology-and-more/"/>
-    <id>https://wasteland.touko.moe/blog/2020/06/home-network-3-hack-synology-and-more/</id>
-    <published>2020-06-12T01:28:27.000Z</published>
-    <updated>2020-06-12T06:50:00.144Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;NAS-该用来做什么&quot;&gt;&lt;a href=&quot;#NAS-该用来做什么&quot; class=&quot;headerlink&quot; title=&quot;NAS 该用来做什么&quot;&gt;&lt;/a&gt;NAS 该用来做什么&lt;/h1&gt;&lt;p&gt;我打算将 NAS 定位为一个家庭用的小型多媒体平台，并作为软路由处理流量。因此， NAS 应该要能满足我挂 BT 下载的需求，并且还要能够直接读取 BT 下载的内容，以家庭影院的形式展现。经过筛选，我选择安装以下 Docker 软件&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Transmission （BT 下载，Web UI 控制）&lt;/li&gt;
-&lt;li&gt;Plex Media Server （家庭影院）&lt;/li&gt;
-&lt;li&gt;Pi-Hole （DNS 广告过滤和自定义 Host）&lt;/li&gt;
-&lt;li&gt;V2Ray （公网访问内网，等于 VPN）&lt;/li&gt;
-&lt;li&gt;NginX （统一反代 Web UI，管理端口暴露规则）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;以及，感谢 UNRAID 对 kvm 的良好支持，我还安装了&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;黑群晖&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;黑群晖&quot;&gt;&lt;a href=&quot;#黑群晖&quot; class=&quot;headerlink&quot; title=&quot;黑群晖&quot;&gt;&lt;/a&gt;黑群晖&lt;/h1&gt;&lt;p&gt;群晖是一个卖软件的 NAS 硬件商，其软件十分好用，新手友好。自然，我先选择安装破解的群晖系统。实际上，装完群晖后，我几乎没有使用里面的功能，因为我还是比较倾向于用 UNRAID 自带的 Docker 完成我需要的服务。不过我在研究黑群晖安装的过程中，学习了一些经验，这里做一下记录。&lt;/p&gt;
-&lt;h2 id=&quot;安装准备&quot;&gt;&lt;a href=&quot;#安装准备&quot; class=&quot;headerlink&quot; title=&quot;安装准备&quot;&gt;&lt;/a&gt;安装准备&lt;/h2&gt;
-
-&lt;p&gt;安装黑群晖的原理是安装一个第三方的、破解后的引导，来欺骗群晖系统镜像正常工作。因此我们需要下载破解的引导作为启动盘，然后去官方网站上下载安装镜像就可以了。破解的引导我推荐在 &lt;a href=&quot;https://xpenology.club/downloads/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://xpenology.club/downloads/&lt;/a&gt; 下载。网站中 DSM 6.2指的是支持 &lt;code&gt;DSM 6.2&lt;/code&gt; 的系统，引导的文件名最后一串为群晖的机型。在安装时注意下载对应系统和机型的镜像。可以在 &lt;a href=&quot;https://archive.synology.com/download/DSM/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://archive.synology.com/download/DSM/&lt;/a&gt; 下载。&lt;/p&gt;
-&lt;p&gt;由于我的虚拟机无法正常启动 &lt;code&gt;Jun’s Loader v1.04b DS918+&lt;/code&gt; ，这里以 &lt;code&gt;Jun’s Loaders DSM 6.2&lt;/code&gt; - &lt;code&gt;Jun’s Loader v1.03b DS3617xs&lt;/code&gt; 为例。下载对应引导并解压，将引导拷贝至 NAS。我创建了一个共享文件夹 HackSynology 用于放置群晖相关文件。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Network" scheme="https://wasteland.touko.moe/categories/Network/"/>
-    
-      <category term="NAS" scheme="https://wasteland.touko.moe/categories/NAS/"/>
-    
-    
-      <category term="NAS" scheme="https://wasteland.touko.moe/tags/NAS/"/>
-    
-  </entry>
   
   <entry>
     <title>家庭网络管理(2): 部署和使用 UNRAID</title>
@@ -72,6 +33,45 @@
 &lt;p&gt;截至目前，最新的破解版是 &lt;code&gt;UNRAID 6.8.2&lt;/code&gt; ，下载地址在 &lt;a href=&quot;http://www.hopol.cn/2020/06/1675/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.hopol.cn/2020/06/1675/&lt;/a&gt; 。这个安装包自带密钥计算工具，可以使用 &lt;a href=&quot;https://koolshare.cn/thread-181253-1-1.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://koolshare.cn/thread-181253-1-1.html&lt;/a&gt; 提供的一键安装工具进行安装；或者按照破解版下载页面的安装方法设置 UNRAID U 盘 启动，然后再回到 Windows 进行破解密钥生成。&lt;/p&gt;
 &lt;h1 id=&quot;初期配置&quot;&gt;&lt;a href=&quot;#初期配置&quot; class=&quot;headerlink&quot; title=&quot;初期配置&quot;&gt;&lt;/a&gt;初期配置&lt;/h1&gt;&lt;h2 id=&quot;点亮&quot;&gt;&lt;a href=&quot;#点亮&quot; class=&quot;headerlink&quot; title=&quot;点亮&quot;&gt;&lt;/a&gt;点亮&lt;/h2&gt;&lt;p&gt;先将显示器接上运行 UNRAID 的机器。在开机启动时，狂按 Del 进入 BIOS 配置页面，修改默认主板设置。我先修改默认启动引导至装有 UNRAID 系统的 U 盘上，然后打开了 CPU 的虚拟化功能（VT-d），F10 保存重启。&lt;/p&gt;
 &lt;p&gt;启动选项选择 &lt;code&gt;Unraid OS (Headless)&lt;/code&gt; 。如果正常启动，在命令行可以看到 UNRAID 被分配到的 IP 地址。通过 Web 访问即可。默认账户为 root ，无密码。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Network" scheme="https://wasteland.touko.moe/categories/Network/"/>
+    
+      <category term="NAS" scheme="https://wasteland.touko.moe/categories/NAS/"/>
+    
+    
+      <category term="NAS" scheme="https://wasteland.touko.moe/tags/NAS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>家庭网络管理(3): UNRAID 安装黑群晖和其他常用软件</title>
+    <link href="https://wasteland.touko.moe/blog/2020/06/home-network-3-hack-synology-and-more/"/>
+    <id>https://wasteland.touko.moe/blog/2020/06/home-network-3-hack-synology-and-more/</id>
+    <published>2020-06-10T01:28:27.000Z</published>
+    <updated>2020-06-12T07:07:05.441Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;NAS-该用来做什么&quot;&gt;&lt;a href=&quot;#NAS-该用来做什么&quot; class=&quot;headerlink&quot; title=&quot;NAS 该用来做什么&quot;&gt;&lt;/a&gt;NAS 该用来做什么&lt;/h1&gt;&lt;p&gt;我打算将 NAS 定位为一个家庭用的小型多媒体平台，并作为软路由处理流量。因此， NAS 应该要能满足我挂 BT 下载的需求，并且还要能够直接读取 BT 下载的内容，以家庭影院的形式展现。经过筛选，我选择安装以下 Docker 软件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Transmission （BT 下载，Web UI 控制）&lt;/li&gt;
+&lt;li&gt;Plex Media Server （家庭影院）&lt;/li&gt;
+&lt;li&gt;Pi-Hole （DNS 广告过滤和自定义 Host）&lt;/li&gt;
+&lt;li&gt;V2Ray （公网访问内网，等于 VPN）&lt;/li&gt;
+&lt;li&gt;NginX （统一反代 Web UI，管理端口暴露规则）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以及，感谢 UNRAID 对 kvm 的良好支持，我还安装了&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;黑群晖&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;黑群晖&quot;&gt;&lt;a href=&quot;#黑群晖&quot; class=&quot;headerlink&quot; title=&quot;黑群晖&quot;&gt;&lt;/a&gt;黑群晖&lt;/h1&gt;&lt;p&gt;群晖是一个卖软件的 NAS 硬件商，其软件十分好用，新手友好。自然，我先选择安装破解的群晖系统。实际上，装完群晖后，我几乎没有使用里面的功能，因为我还是比较倾向于用 UNRAID 自带的 Docker 完成我需要的服务。不过我在研究黑群晖安装的过程中，学习了一些经验，这里做一下记录。&lt;/p&gt;
+&lt;h2 id=&quot;安装准备&quot;&gt;&lt;a href=&quot;#安装准备&quot; class=&quot;headerlink&quot; title=&quot;安装准备&quot;&gt;&lt;/a&gt;安装准备&lt;/h2&gt;&lt;img src=&quot;/blog/2020/06/home-network-3-hack-synology-and-more/xpenology-download.png&quot; class=&quot;&quot; title=&quot;XPENOLOGY 黑群晖引导&quot;&gt;
+
+&lt;p&gt;安装黑群晖的原理是安装一个第三方的、破解后的引导，来欺骗群晖系统镜像正常工作。因此我们需要下载破解的引导作为启动盘，然后去官方网站上下载安装镜像就可以了。破解的引导我推荐在 &lt;a href=&quot;https://xpenology.club/downloads/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://xpenology.club/downloads/&lt;/a&gt; 下载。网站中 DSM 6.2指的是支持 &lt;code&gt;DSM 6.2&lt;/code&gt; 的系统，引导的文件名最后一串为群晖的机型。在安装时注意下载对应系统和机型的镜像。可以在 &lt;a href=&quot;https://archive.synology.com/download/DSM/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://archive.synology.com/download/DSM/&lt;/a&gt; 下载。&lt;/p&gt;
+&lt;p&gt;由于我的虚拟机无法正常启动 &lt;code&gt;Jun’s Loader v1.04b DS918+&lt;/code&gt; ，这里以 &lt;code&gt;Jun’s Loaders DSM 6.2&lt;/code&gt; - &lt;code&gt;Jun’s Loader v1.03b DS3617xs&lt;/code&gt; 为例。下载对应引导并解压，将引导拷贝至 NAS。我创建了一个共享文件夹 HackSynology 用于放置群晖相关文件。&lt;/p&gt;
     
     </summary>
     
@@ -156,9 +156,9 @@
     </summary>
     
     
-      <category term="Network" scheme="https://wasteland.touko.moe/categories/Network/"/>
-    
       <category term="Linux" scheme="https://wasteland.touko.moe/categories/Linux/"/>
+    
+      <category term="Network" scheme="https://wasteland.touko.moe/categories/Network/"/>
     
     
       <category term="V2Ray" scheme="https://wasteland.touko.moe/tags/V2Ray/"/>
