@@ -30,6 +30,8 @@ UNRAID 的官网是 https://unraid.net/ ，价格表在 https://unraid.net/prici
 
 启动选项选择 `Unraid OS (Headless)` 。如果正常启动，在命令行可以看到 UNRAID 被分配到的 IP 地址。通过 Web 访问即可。默认账户为 root ，无密码。
 
+<!--more-->
+
 ## 配置网络
 
 {% asset_img unraid-network-settings.png UNRAID 静态 IP 配置 %}
@@ -143,3 +145,4 @@ EOF
 - https://wiki.unraid.net/Check_Harddrive_Speed
 - https://forums.unraid.net/topic/38582-plug-in-community-applications/
 - https://forums.unraid.net/topic/35866-unraid-6-nerdpack-cli-tools-iftop-iotop-screen-kbd-etc/
+- https://forums.unraid.net/topic/77390-cannot-access-dockers-using-custombr0/
