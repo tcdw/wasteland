@@ -16,12 +16,3 @@ https://github.com/dzhuang/tinymediamanager-docker
 https://github.com/ZeroQI/Hama.bundle
 https://github.com/ZeroQI/Absolute-Series-Scanner/
 
-
-
-pi-hole password
-
-sudo pihole -a -p
-https://handlers.sans.edu/gbruneau/pihole.htm
-
-remote pi-hole
-https://discourse.pi-hole.net/t/how-to-enable-remote-internet-access-for-pi-hole-web-dashboard/7025
