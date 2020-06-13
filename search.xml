@@ -1,6 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>家庭网络管理(4): 单网口安装 OpenWRT 实现单臂软路由</title>
+    <url>//blog/2020/06/home-network-4-soft-router-at-unraid/</url>
+    <content><![CDATA[<h1 id="软路由"><a href="#软路由" class="headerlink" title="软路由"></a>软路由</h1><p>为了进一步发挥 NAS 的作用，我决定在它上面部署一个软路由。因为软路由可以更好地管理流量，部署科学上网，特别是在主路由小米 AC2100 <code>MT7621</code> 方案性能有限的情况下，x86 架构的软路由能够进行的加解密运算能力远远超过主路由。我的 NAS 只有板载千兆单网口，实现起来没有多网口路由器那么优雅，好在还是能够用单臂路由的方法实现软路由。</p>
+<h1 id="网络拓扑规划"><a href="#网络拓扑规划" class="headerlink" title="网络拓扑规划"></a>网络拓扑规划</h1><h2 id="设备一览"><a href="#设备一览" class="headerlink" title="设备一览"></a>设备一览</h2><p>在规划网络之前，需要先清点一下我有哪些设备，这些设备分别有哪些上网的需求。</p>
+<p>路由器，我有</p>
+<ul>
+<li>一台联通的光猫</li>
+<li>一台小米 AC2100</li>
+<li>一台小米 R3</li>
+<li>一台老旧的小米 3C（大概就不用了）</li>
+</ul>
+<p>终端设备我有</p>
+<ul>
+<li>若干 PC</li>
+<li>若干手机</li>
+</ul>
+<p>IoT 设备我有</p>
+<ul>
+<li>遍布房间的传感器</li>
+<li>智能插座</li>
+<li>开关</li>
+</ul>
+<p>因此，我打算将光猫作为拨号终端；小米 AC2100 作为主路由，保留小米原有系统（后来我把它刷成 OpenWRT 了）；小米 R3 无线桥接 AC2100，作为 IoT 的接入点（因为位置的原因，AC 2100 摆放在光猫边上，2.4G 没有办法很好地覆盖整个屋子，所以要用 R3 中继）。光猫的无线功能关闭，避免影响其他网络的速度。</p>
+<h2 id="拓扑规划"><a href="#拓扑规划" class="headerlink" title="拓扑规划"></a>拓扑规划</h2><p>NAS 使用网线连接小米 AC2100。UNRAID 系统通过网桥（一般为 br0）让虚拟机和 Docker 上网，可以理解为一个二层交换机。我简单做个一个拓扑图，解释我打算规划的拓扑结构。</p>
+<img src="/blog/2020/06/home-network-4-soft-router-at-unraid/%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE.png" class="" title="单臂路由网络拓扑图">
+
+<p>我的规划如图，光猫负责拨号，小米 AC2100 作为主路由处理流量，R3 通过无线中继服务 IoT 设备，NAS 虚拟化各种服务和软路由提供功能。其中，主路由的 IP 地址为 192.168.31.1，软路由的 IP 地址为 192.168.31.2。为了让所有流量在转发至公网时经过软路由处理，由 AC2100、R3 所有通过 AP 接入的设备和有线接入的设备都要以 192.168.31.2（软路由） 作为网关，而软路由要以 192.168.31.1（主路由） 作为网关。为了实现这个功能，整个 LAN 中只能由软路由一个 DHCP 服务端。即，让新加入的设备自动以软路由作为网关。</p>
+<h1 id="单臂软路由配置"><a href="#单臂软路由配置" class="headerlink" title="单臂软路由配置"></a>单臂软路由配置</h1><h2 id="选择系统"><a href="#选择系统" class="headerlink" title="选择系统"></a>选择系统</h2><a id="more"></a>
+
+<p>首先下载 OpenWRT 系统安装文件。进入 <a href="https://downloads.openwrt.org/releases/" target="_blank" rel="noopener">https://downloads.openwrt.org/releases/</a> 选择对应版本和对应系统架构。由于我是 x86，所以我下载了 x86 generic 版本（openwrt-19.07.3-x86-generic-combined-ext4.img）<a href="https://downloads.openwrt.org/releases/19.07.3/targets/x86/generic/" target="_blank" rel="noopener">https://downloads.openwrt.org/releases/19.07.3/targets/x86/generic/</a>。将其解压，复制到 NAS 上任意位置。由于该镜像已经打包好，可以作为硬盘使用，所以不用额外预留其他空间用于存放文件。</p>
+<img src="/blog/2020/06/home-network-4-soft-router-at-unraid/openwrt-image.png" class="" title="OpenWRT 镜像">
+
+<h2 id="部署虚拟机"><a href="#部署虚拟机" class="headerlink" title="部署虚拟机"></a>部署虚拟机</h2><img src="/blog/2020/06/home-network-4-soft-router-at-unraid/openwrt-vm-setting.png" class="" title="OpenWRT VM 设置">
+
+<p>添加 VM - Linux，直通 CPU 建议全选上，毕竟处理网络流量比较耗费算力。BIOS 改为 SeaBIOS，主硬盘 Manual，指向 OpenWRT 镜像位置，其他保持默认即可。</p>
+<img src="/blog/2020/06/home-network-4-soft-router-at-unraid/openwrt-network-config.png" class="" title="OpenWRT 初次运行网络设置">
+
+<p>创建虚拟机并自动运行。进入 VNC，先用 <code>passwd</code> 命令修改默认密码，然后进入 <code>vi /etc/config/network</code> 修改为预定的内网 IP 地址。保存配置文件， <code>/etc/init.d/network restart</code> 重启网络配置。浏览器访问内网 IP 地址，一切顺利的话，机器就能启动了。由于我是演示，使用 192.168.31.3 作为 IP。</p>
+<p>如果 VNC 中观察到 <code>Switching to clocksource tsc</code> 或者其他错误导致按回车也没反应，可以考虑更换其他架构的镜像。</p>
+<h2 id="初期配置"><a href="#初期配置" class="headerlink" title="初期配置"></a>初期配置</h2><img src="/blog/2020/06/home-network-4-soft-router-at-unraid/openwrt-interface-settings.png" class="" title="OpenWRT UI 界面网络设置">
+
+<p>安装完路由系统后，首先需要对系统进行一些初期配置。浏览器进入设置好的 IP，<code>Network</code> - <code>Interfaces</code> - <code>Edit LAN</code>，增加 <code>gateway</code> 为主路由（在我这是小米 AC2100）的 IP 地址，IPv4 broadcast<br> 保持默认，DNS 随意设置（但是一定要设置）。切换到 <code>DHCP Server</code> 选项卡，将 <code>Advanced Settings</code> 的 <code>Force</code> 勾选。</p>
+<p>SSH 登录路由，执行 <code>sed -i &#39;s_downloads.openwrt.org_mirrors.tuna.tsinghua.edu.cn/openwrt_&#39; /etc/opkg/distfeeds.conf</code> 更换国内 OpenWRT 源，更新软件包 <code>opkg update</code> ，执行 <code>opkg install luci-i18n-base-zh-cn</code> 安装中文 Web 界面。如果安装过程无法正常进行，请重新检查联网设置。</p>
+<h2 id="测试联网情况"><a href="#测试联网情况" class="headerlink" title="测试联网情况"></a>测试联网情况</h2><img src="/blog/2020/06/home-network-4-soft-router-at-unraid/local-test.png" class="" title="本地联网测试">
+
+<p>为了测试软路由工作情况，我们可以手工设置本地网关，修改网关至软路由对应的 IP 地址，查看连接情况。如果一切正常，就可以关掉主路由上的 DHCP 服务，让软路由提供 DHCP 服务了。一般来说，只要初期配置中路由命令行能够正常更新软件包，这一步也不会有太多问题。</p>
+<p>在软路由提供 DHCP 服务后，新接入的设备和需要更新 DHCP 租约的设备都会以软路由作为网关访问外网。从路径上看，就是 终端 - 主路由 - 软路由（处理流量） - 主路由 - WAN。</p>
+<h1 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h1><h2 id="延迟"><a href="#延迟" class="headerlink" title="延迟"></a>延迟</h2><p>我使用高精度延迟测试工具 hrping 进行测试，这个工具可以从 <a href="http://www.cfos.de/en/download/start-download.htm?file=/hrping-v507.zip" target="_blank" rel="noopener">http://www.cfos.de/en/download/start-download.htm?file=/hrping-v507.zip</a> 下载。我将一台电脑连接至联通光猫 192.168.1.1 ，关闭防火墙，进行长时间 ping 测试。</p>
+<p><strong>软路由作为网关</strong></p>
+<p>tracert</p>
+<img src="/blog/2020/06/home-network-4-soft-router-at-unraid/tracert.png" class="" title="Tracert 结果">
+
+<p>ping</p>
+<img src="/blog/2020/06/home-network-4-soft-router-at-unraid/ping-test-with-gateway.png" class="" title="软路由作为网关">
+
+<p><strong>主路由作为网关</strong></p>
+<p>ping</p>
+<img src="/blog/2020/06/home-network-4-soft-router-at-unraid/ping-test-without-gateway.png" class="" title="主路由作为网关">
+
+<p>可以看到，使用软路由作为路由，仅增加了 0.5ms 的延迟，稳定性也没有较大的变化。相对于软路由的好处来说，这个延迟增加是可以接受的。</p>
+<h2 id="带宽和功耗"><a href="#带宽和功耗" class="headerlink" title="带宽和功耗"></a>带宽和功耗</h2><h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><p>我使用 iperf3 作为带宽测试工具，测试终端间、终端到软路由、软路由和 NAS 之间的带宽和功耗。以下简单列出一些测试结果</p>
+<p>AC2100 的网口为千兆</p>
+<h4 id="NAS-静止功耗"><a href="#NAS-静止功耗" class="headerlink" title="NAS 静止功耗"></a>NAS 静止功耗</h4><p>29.59W</p>
+<h4 id="PC（软路由网关）-PC（光猫-LAN）"><a href="#PC（软路由网关）-PC（光猫-LAN）" class="headerlink" title="PC（软路由网关）- PC（光猫 LAN）"></a>PC（软路由网关）- PC（光猫 LAN）</h4><img src="/blog/2020/06/home-network-4-soft-router-at-unraid/bandwidth-test-1.png" class="" title="软路由 PC - 光猫 LAN">
+
+<p>由于联通的光猫只有一个千兆口，剩下全是百兆口，所以实际测速只有百兆。此时的 NAS 功耗为 37 - 40W</p>
+<h4 id="PC（软路由网关）-软路由"><a href="#PC（软路由网关）-软路由" class="headerlink" title="PC（软路由网关） - 软路由"></a>PC（软路由网关） - 软路由</h4><p>800Mb 49W</p>
+<h4 id="PC（软路由网关）-NAS"><a href="#PC（软路由网关）-NAS" class="headerlink" title="PC（软路由网关） - NAS"></a>PC（软路由网关） - NAS</h4><p>930Mb 53W</p>
+<h4 id="软路由-NAS-（网桥内网）"><a href="#软路由-NAS-（网桥内网）" class="headerlink" title="软路由 - NAS （网桥内网）"></a>软路由 - NAS （网桥内网）</h4><p>6.5-7.5Gb 58W</p>
+<h4 id="软路由-V2Ray-加密带宽和功耗"><a href="#软路由-V2Ray-加密带宽和功耗" class="headerlink" title="软路由 V2Ray 加密带宽和功耗"></a>软路由 V2Ray 加密带宽和功耗</h4><p>我通过 OpenClash 挂 V2Ray 的梯子，远程访问我的服务器，测试经过 V2Ray 加密之后的功耗。实际测试结果为</p>
+<p>100Mb 37W<br>260Mb 43W</p>
+<h3 id="TCP-with-V2Ray"><a href="#TCP-with-V2Ray" class="headerlink" title="TCP with V2Ray"></a>TCP with V2Ray</h3><p>上述 V2Ray 的测试让我突发奇想，打算测试一下 NAS CPU 在满载 V2Ray 时的负载，看看这块 CPU 对 V2Ray 流量的处理能力。为了让 iperf3 通过代理，我简单编写了一个（自攻自受）的反向代理，让 V2Ray 在此期间进行一轮加密和一轮解密。iperf3 的流量穿过一层 V2Ray 的隧道，在网桥内网中测试。</p>
+<p><strong>软路由 - NAS （没有 V2Ray）</strong></p>
+<p>6.5-7.5Gb 58W</p>
+<img src="/blog/2020/06/home-network-4-soft-router-at-unraid/test-without-v2ray.png" class="" title="没有 V2Ray， CPU 负载">
+<img src="/blog/2020/06/home-network-4-soft-router-at-unraid/test-without-v2ray-res.png" class="" title="没有 V2Ray， 带宽">
+
+<p><strong>软路由 - NAS （V2Ray 一次加密，一次解密 + 反向代理）</strong></p>
+<p>2.5-3Gb 58W</p>
+<img src="/blog/2020/06/home-network-4-soft-router-at-unraid/test-with-v2ray.png" class="" title="没有 V2Ray， CPU 负载">
+<img src="/blog/2020/06/home-network-4-soft-router-at-unraid/test-with-v2ray-res.png" class="" title="没有 V2Ray， 带宽">
+
+<p>结果表明这块 CPU 的性能和功耗还是非常棒的，在满载的情况下可以同时处理 2.5Gb 带宽以上的 V2Ray 流量（实际情况应该和这个不同，实际情况中不需要一次加密和一次解密，但是需要考虑其他运算，例如 ws，tls），应付日常使用绰绰有余。</p>
+<h1 id="展望"><a href="#展望" class="headerlink" title="展望"></a>展望</h1><p>一切看起来都很美好，但是也有美中不足的地方。UNRAID 运行的 Docker 无法以软路由作为网关，即 UNRAID Docker 的流量无法经过软路由。目前我并不知道为什么会这样，可能是由于启动顺序不同导致的问题。因为如果要修改 UNRAID 的默认网关，需要停止整个阵列。一旦阵列停止，Docker 和 VM（包括软路由）也需要停止。如果修改完设置，启动阵列时，Docker 会因为没有 DHCP 服务器而无法分配到 IP 地址（一般来说 VM 启动优先级更慢）。我正在继续寻找解决方案。</p>
+<p>由于 CPU 性能足够，我打算下一步上万兆网卡和万兆交换机，让内网进一步加速。同时，我打算直接在 NAS 上安装万兆网卡。这块主板还有一个 PCIE x16 插槽，可以插一张多口万兆网卡实现软路由硬件直通，进一步提高效率。</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="https://openwrt.org/toh/views/toh_fwdownload" target="_blank" rel="noopener">https://openwrt.org/toh/views/toh_fwdownload</a></li>
+<li><a href="http://www.cfos.de/en/ping/ping.htm" target="_blank" rel="noopener">http://www.cfos.de/en/ping/ping.htm</a></li>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/openwrt/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/help/openwrt/</a></li>
+<li><a href="https://post.smzdm.com/p/az502200/" target="_blank" rel="noopener">https://post.smzdm.com/p/az502200/</a></li>
+<li><a href="https://www.jianshu.com/p/da01ce070688" target="_blank" rel="noopener">https://www.jianshu.com/p/da01ce070688</a></li>
+<li><a href="https://post.smzdm.com/p/ax027g83/" target="_blank" rel="noopener">https://post.smzdm.com/p/ax027g83/</a></li>
+<li><a href="https://toutyrater.github.io/app/reverse.html" target="_blank" rel="noopener">https://toutyrater.github.io/app/reverse.html</a></li>
+<li><a href="https://iperf.fr/iperf-doc.php" target="_blank" rel="noopener">https://iperf.fr/iperf-doc.php</a></li>
+<li>感谢拓扑绘画工具 <a href="https://www.processon.com/" target="_blank" rel="noopener">https://www.processon.com/</a> 尽管使用中还遇上很多 BUG</li>
+</ul>
+<p>———— <br/>License: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">BY-NC-SA 4.0</a> <br/>Link:  <a href="https://wasteland.touko.moe//blog/2020/06/home-network-4-soft-router-at-unraid/">https://wasteland.touko.moe//blog/2020/06/home-network-4-soft-router-at-unraid/</a> <br/>Written with <strong>Passion</strong> and <strong>Hope</strong></p>
+]]></content>
+      <categories>
+        <category>Network</category>
+        <category>NAS</category>
+        <category>Router</category>
+      </categories>
+      <tags>
+        <tag>NAS</tag>
+        <tag>Router</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>家庭网络管理(3): UNRAID 安装黑群晖和其他常用软件</title>
     <url>//blog/2020/06/home-network-3-hack-synology-and-more/</url>
     <content><![CDATA[<h1 id="NAS-该用来做什么"><a href="#NAS-该用来做什么" class="headerlink" title="NAS 该用来做什么"></a>NAS 该用来做什么</h1><p>我打算将 NAS 定位为一个家庭用的小型多媒体平台，并作为软路由处理流量。因此， NAS 应该要能满足我挂 BT 下载的需求，并且还要能够直接读取 BT 下载的内容，以家庭影院的形式展现。经过筛选，我选择安装以下 Docker 软件</p>
@@ -889,8 +998,8 @@
 ]]></content>
       <categories>
         <category>Web</category>
-        <category>Frontend</category>
         <category>Talk</category>
+        <category>Frontend</category>
         <category>Blog</category>
       </categories>
       <tags>

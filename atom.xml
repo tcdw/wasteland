@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wasteland.touko.moe/"/>
-  <updated>2020-06-12T07:07:05.441Z</updated>
+  <updated>2020-06-13T17:18:12.204Z</updated>
   <id>https://wasteland.touko.moe/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>家庭网络管理(4): 单网口安装 OpenWRT 实现单臂软路由</title>
+    <link href="https://wasteland.touko.moe/blog/2020/06/home-network-4-soft-router-at-unraid/"/>
+    <id>https://wasteland.touko.moe/blog/2020/06/home-network-4-soft-router-at-unraid/</id>
+    <published>2020-06-13T08:52:38.000Z</published>
+    <updated>2020-06-13T17:18:12.204Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;软路由&quot;&gt;&lt;a href=&quot;#软路由&quot; class=&quot;headerlink&quot; title=&quot;软路由&quot;&gt;&lt;/a&gt;软路由&lt;/h1&gt;&lt;p&gt;为了进一步发挥 NAS 的作用，我决定在它上面部署一个软路由。因为软路由可以更好地管理流量，部署科学上网，特别是在主路由小米 AC2100 &lt;code&gt;MT7621&lt;/code&gt; 方案性能有限的情况下，x86 架构的软路由能够进行的加解密运算能力远远超过主路由。我的 NAS 只有板载千兆单网口，实现起来没有多网口路由器那么优雅，好在还是能够用单臂路由的方法实现软路由。&lt;/p&gt;
+&lt;h1 id=&quot;网络拓扑规划&quot;&gt;&lt;a href=&quot;#网络拓扑规划&quot; class=&quot;headerlink&quot; title=&quot;网络拓扑规划&quot;&gt;&lt;/a&gt;网络拓扑规划&lt;/h1&gt;&lt;h2 id=&quot;设备一览&quot;&gt;&lt;a href=&quot;#设备一览&quot; class=&quot;headerlink&quot; title=&quot;设备一览&quot;&gt;&lt;/a&gt;设备一览&lt;/h2&gt;&lt;p&gt;在规划网络之前，需要先清点一下我有哪些设备，这些设备分别有哪些上网的需求。&lt;/p&gt;
+&lt;p&gt;路由器，我有&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一台联通的光猫&lt;/li&gt;
+&lt;li&gt;一台小米 AC2100&lt;/li&gt;
+&lt;li&gt;一台小米 R3&lt;/li&gt;
+&lt;li&gt;一台老旧的小米 3C（大概就不用了）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;终端设备我有&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若干 PC&lt;/li&gt;
+&lt;li&gt;若干手机&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;IoT 设备我有&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;遍布房间的传感器&lt;/li&gt;
+&lt;li&gt;智能插座&lt;/li&gt;
+&lt;li&gt;开关&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此，我打算将光猫作为拨号终端；小米 AC2100 作为主路由，保留小米原有系统（后来我把它刷成 OpenWRT 了）；小米 R3 无线桥接 AC2100，作为 IoT 的接入点（因为位置的原因，AC 2100 摆放在光猫边上，2.4G 没有办法很好地覆盖整个屋子，所以要用 R3 中继）。光猫的无线功能关闭，避免影响其他网络的速度。&lt;/p&gt;
+&lt;h2 id=&quot;拓扑规划&quot;&gt;&lt;a href=&quot;#拓扑规划&quot; class=&quot;headerlink&quot; title=&quot;拓扑规划&quot;&gt;&lt;/a&gt;拓扑规划&lt;/h2&gt;&lt;p&gt;NAS 使用网线连接小米 AC2100。UNRAID 系统通过网桥（一般为 br0）让虚拟机和 Docker 上网，可以理解为一个二层交换机。我简单做个一个拓扑图，解释我打算规划的拓扑结构。&lt;/p&gt;
+&lt;img src=&quot;/blog/2020/06/home-network-4-soft-router-at-unraid/%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE.png&quot; class=&quot;&quot; title=&quot;单臂路由网络拓扑图&quot;&gt;
+
+&lt;p&gt;我的规划如图，光猫负责拨号，小米 AC2100 作为主路由处理流量，R3 通过无线中继服务 IoT 设备，NAS 虚拟化各种服务和软路由提供功能。其中，主路由的 IP 地址为 192.168.31.1，软路由的 IP 地址为 192.168.31.2。为了让所有流量在转发至公网时经过软路由处理，由 AC2100、R3 所有通过 AP 接入的设备和有线接入的设备都要以 192.168.31.2（软路由） 作为网关，而软路由要以 192.168.31.1（主路由） 作为网关。为了实现这个功能，整个 LAN 中只能由软路由一个 DHCP 服务端。即，让新加入的设备自动以软路由作为网关。&lt;/p&gt;
+&lt;h1 id=&quot;单臂软路由配置&quot;&gt;&lt;a href=&quot;#单臂软路由配置&quot; class=&quot;headerlink&quot; title=&quot;单臂软路由配置&quot;&gt;&lt;/a&gt;单臂软路由配置&lt;/h1&gt;&lt;h2 id=&quot;选择系统&quot;&gt;&lt;a href=&quot;#选择系统&quot; class=&quot;headerlink&quot; title=&quot;选择系统&quot;&gt;&lt;/a&gt;选择系统&lt;/h2&gt;
+    
+    </summary>
+    
+    
+      <category term="Network" scheme="https://wasteland.touko.moe/categories/Network/"/>
+    
+      <category term="NAS" scheme="https://wasteland.touko.moe/categories/NAS/"/>
+    
+      <category term="Router" scheme="https://wasteland.touko.moe/categories/Network/Router/"/>
+    
+    
+      <category term="NAS" scheme="https://wasteland.touko.moe/tags/NAS/"/>
+    
+      <category term="Router" scheme="https://wasteland.touko.moe/tags/Router/"/>
+    
+  </entry>
   
   <entry>
     <title>家庭网络管理(3): UNRAID 安装黑群晖和其他常用软件</title>
@@ -380,9 +432,9 @@
     
       <category term="Web" scheme="https://wasteland.touko.moe/categories/Web/"/>
     
-      <category term="Frontend" scheme="https://wasteland.touko.moe/categories/Web/Frontend/"/>
-    
       <category term="Talk" scheme="https://wasteland.touko.moe/categories/Talk/"/>
+    
+      <category term="Frontend" scheme="https://wasteland.touko.moe/categories/Web/Frontend/"/>
     
       <category term="Blog" scheme="https://wasteland.touko.moe/categories/Blog/"/>
     
