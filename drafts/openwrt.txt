@@ -1,14 +1,4 @@
 
-https://openwrt.org/toh/views/toh_fwdownload
-
-x86
-
-https://mirrors.tuna.tsinghua.edu.cn/help/openwrt/
-
-
-https://www.dazhuanlan.com/2019/10/17/5da7cdea1f0c8/
-luci-i18n-base-zh-cn
-
 https://post.smzdm.com/p/ax027g83/
 https://post.smzdm.com/p/az502200/
 
@@ -18,7 +8,3 @@ https://github.com/vernesong/OpenClash/issues/95
 dnsmaq
 
 vm启动后先设置网络，再更新包
-
-
-网盘
-https://hub.docker.com/r/superng6/baidupcs-web

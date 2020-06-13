@@ -126,6 +126,8 @@ sudo tee /etc/docker/daemon.json <<-'EOF'
 EOF
 ```
 
+为了在每次重启时自动应用配置，建议将其写入 `\flash\config\go` 中。其中 `\flash` 指装有 UNRAID 的 U 盘根目录。
+
 ## 允许 Docker 虚拟机访问宿主机
 
 由于 Docker 的网络隔离，有时候我想进行一些特殊的操作就比较困难。比如我将所有的服务用一个 NginX 反代，但是使用 `Host` 或者 `Bridge` 方式暴露端口在宿主机上的服务就无法被反代。因此，我需要手工修改 UNRAID 的 Docker 设置。进入 `Settings` - `Docker` ，点击右上方的 `Basic View` ，切换成 `Advanced View` ，然后修改对应选项即可。这么做存在一定风险。我认真检查防火墙，保证外网的访问能够安全地被处理后，才进行这个操作。
