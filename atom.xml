@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wasteland.touko.moe/"/>
-  <updated>2020-06-13T17:18:12.204Z</updated>
+  <updated>2020-07-17T12:11:22.188Z</updated>
   <id>https://wasteland.touko.moe/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在树莓派上运行 Home Assistant，支持米家等 IoT 设备接入 HomeKit</title>
+    <link href="https://wasteland.touko.moe/blog/2020/06/run-hass-on-raspberry/"/>
+    <id>https://wasteland.touko.moe/blog/2020/06/run-hass-on-raspberry/</id>
+    <published>2020-06-20T07:22:08.000Z</published>
+    <updated>2020-07-17T12:11:22.188Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;h2 id=&quot;捡了块树莓派&quot;&gt;&lt;a href=&quot;#捡了块树莓派&quot; class=&quot;headerlink&quot; title=&quot;捡了块树莓派&quot;&gt;&lt;/a&gt;捡了块树莓派&lt;/h2&gt;&lt;p&gt;临时被叫回学校办毕业手续，想起当年（五年前）我在淘宝买了块树莓派 2B，给家里做了个通过 HTTP 代理自动分流国内外流量的工具。那块树莓派被我带到了学校，放着吃灰三年多了。这次回学校，就顺手把这块树莓派带了回来。&lt;/p&gt;
+&lt;p&gt;最近优化了家里的网络，大学四年也断断续续买了不少米家的 IoT 设备。米家设备能够原生支持 HomeKit 也应该只是最近的事，我手上只有一个台灯、三个智能插座能够加入 HomeKit 管理。因此，我打算把这台树莓派挂在 IoT 设备专用中继路由器下，作为一个中介，将其他无法原生支持 HomeKit 的米家设备接入 HomeKit，实现统一管理。&lt;/p&gt;
+&lt;p&gt;为什么我不直接用米家做管理呢？一是米家的操作逻辑比较恼人；二是米家无法长期运行于后台，一些和离家、回家相关的自动化逻辑无法很好的运行。接入 HomeKit 后，这种情况会得到一定的改善。&lt;/p&gt;
+&lt;h2 id=&quot;桥接平台的选择&quot;&gt;&lt;a href=&quot;#桥接平台的选择&quot; class=&quot;headerlink&quot; title=&quot;桥接平台的选择&quot;&gt;&lt;/a&gt;桥接平台的选择&lt;/h2&gt;&lt;p&gt;通过资料调查和实际测试，我最终选择了 Home Assistant 作为接入智能家居设备的平台。同类解决方案还有很多，比如同样提供智能家居接入方案的 Home Bridge，ioBroker 等。我同时尝试了 Home Bridge，但是由于米家相关插件文档模糊，接入后无法正常连接挂载在网关的设备，最终作罢。&lt;/p&gt;
+&lt;p&gt;其实 Home Assistant 的安装也并不容易。安装过程存在各种各样的问题和 bug，我尝试了非常多种方案才成功运行。&lt;/p&gt;
+&lt;h1 id=&quot;树莓派的初步配置&quot;&gt;&lt;a href=&quot;#树莓派的初步配置&quot; class=&quot;headerlink&quot; title=&quot;树莓派的初步配置&quot;&gt;&lt;/a&gt;树莓派的初步配置&lt;/h1&gt;&lt;h2 id=&quot;SD-卡安装树莓派系统&quot;&gt;&lt;a href=&quot;#SD-卡安装树莓派系统&quot; class=&quot;headerlink&quot; title=&quot;SD 卡安装树莓派系统&quot;&gt;&lt;/a&gt;SD 卡安装树莓派系统&lt;/h2&gt;&lt;p&gt;我掏出了之前留在机器上的传家宝 TF 卡 三星 EVO+ 32G，不料卡在经过几次刷写后，自动写保护了。于是我又从 NS 里掏出了从 tb 20 RMB 买的朗科 32G TF 卡。现在 TF 卡的价格真的越来越便宜了，我打算屯一堆，免得弄坏了没有替换卡。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>家庭网络管理(4): 单网口安装 OpenWRT 实现单臂软路由</title>
