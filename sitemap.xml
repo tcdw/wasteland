@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wasteland.touko.moe/blog/2020/07/raspi-as-router/</loc>
+    
+    <lastmod>2020-07-19T12:58:33.350Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wasteland.touko.moe/blog/2020/06/run-hass-on-raspberry/</loc>
     
     <lastmod>2020-07-17T12:11:22.188Z</lastmod>
@@ -86,14 +93,14 @@
   </url>
   
   <url>
-    <loc>https://wasteland.touko.moe/lib/pjax/example/index.html</loc>
+    <loc>https://wasteland.touko.moe/lib/pjax/example/forms.html</loc>
     
     <lastmod>2020-06-04T13:43:36.947Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wasteland.touko.moe/lib/pjax/example/forms.html</loc>
+    <loc>https://wasteland.touko.moe/lib/pjax/example/index.html</loc>
     
     <lastmod>2020-06-04T13:43:36.947Z</lastmod>
     
@@ -114,14 +121,14 @@
   </url>
   
   <url>
-    <loc>https://wasteland.touko.moe/blog/2020/03/write-thesis-with-latex/</loc>
+    <loc>https://wasteland.touko.moe/blog/2020/03/customize-hexo/</loc>
     
     <lastmod>2020-06-04T13:43:20.745Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wasteland.touko.moe/blog/2020/03/customize-hexo/</loc>
+    <loc>https://wasteland.touko.moe/blog/2020/03/write-thesis-with-latex/</loc>
     
     <lastmod>2020-06-04T13:43:20.745Z</lastmod>
     

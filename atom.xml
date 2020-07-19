@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wasteland.touko.moe/"/>
-  <updated>2020-07-17T12:11:22.188Z</updated>
+  <updated>2020-07-19T12:58:33.350Z</updated>
   <id>https://wasteland.touko.moe/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在树莓派上运行 OpenWrt 作为软路由</title>
+    <link href="https://wasteland.touko.moe/blog/2020/07/raspi-as-router/"/>
+    <id>https://wasteland.touko.moe/blog/2020/07/raspi-as-router/</id>
+    <published>2020-07-19T05:10:55.000Z</published>
+    <updated>2020-07-19T12:58:33.350Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前我用 NAS 虚拟化了一台 OpenWrt 用作软路由。随着使用频率的增加，我越发离不开它带来的优秀的上网体验。但是用虚拟化的软路由总觉得有些不舒适，比如万一 NAS 掉线（虽然暂时没出现过），内网就会瞬间瘫痪。同时，用这种方法虚拟出来的软路由和小米路由自带的 Mesh 功能有冲突，小米路由无法获取 Mesh 节点的拓扑图，也没有办法进行完整的设备管理（识别不出设备）。&lt;/p&gt;
+&lt;p&gt;解决方案是在小米路由器的上级部署软路由，将原本放在小米路由器内网的软路由移动到光猫内网。我先用树莓派 4 作为软路由进行测试，另一块 1037U 主板在路上。光猫只有一个千兆网口，但是恰好前些时间我买了台网件的 GS105 ，得以在光猫的内网中接入更多千兆设备。&lt;/p&gt;
+&lt;img src=&quot;/blog/2020/07/raspi-as-router/1.netgear-gs105.jpg&quot; class=&quot;&quot; title=&quot;网件 GS105 交换机&quot;&gt;
+
+&lt;p&gt;这是一个五口非网管型交换机，自适应 10/100/1000M，带指示灯，发热量不大，价格百元内。这样一来，网络拓扑就可以进行下面的改动&lt;/p&gt;
+&lt;img src=&quot;/blog/2020/07/raspi-as-router/2.change-of-topology.jpg&quot; class=&quot;&quot; title=&quot;网络拓扑变化&quot;&gt;
+
+&lt;p&gt;将内网的 DHCP 分发任务交给小米路由，允许小米路由 app 完全发挥功能，带来更严格的 WiFi 接入控制和 Mesh 组网体验。另一方面，改变静态 IP 配置将小米路由的网关设置为软路由地址，让其流量通过作为软单臂路由的树莓派，达到科学上网等目的。&lt;/p&gt;
+&lt;h1 id=&quot;树莓派组装&quot;&gt;&lt;a href=&quot;#树莓派组装&quot; class=&quot;headerlink&quot; title=&quot;树莓派组装&quot;&gt;&lt;/a&gt;树莓派组装&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="Network" scheme="https://wasteland.touko.moe/categories/Network/"/>
+    
+      <category term="Router" scheme="https://wasteland.touko.moe/categories/Network/Router/"/>
+    
+      <category term="Raspi" scheme="https://wasteland.touko.moe/categories/Raspi/"/>
+    
+    
+      <category term="Router" scheme="https://wasteland.touko.moe/tags/Router/"/>
+    
+      <category term="Raspi" scheme="https://wasteland.touko.moe/tags/Raspi/"/>
+    
+  </entry>
   
   <entry>
     <title>在树莓派上运行 Home Assistant，支持米家等 IoT 设备接入 HomeKit</title>
@@ -79,9 +114,9 @@
     
       <category term="Network" scheme="https://wasteland.touko.moe/categories/Network/"/>
     
-      <category term="NAS" scheme="https://wasteland.touko.moe/categories/NAS/"/>
-    
       <category term="Router" scheme="https://wasteland.touko.moe/categories/Network/Router/"/>
+    
+      <category term="NAS" scheme="https://wasteland.touko.moe/categories/NAS/"/>
     
     
       <category term="NAS" scheme="https://wasteland.touko.moe/tags/NAS/"/>
@@ -454,11 +489,11 @@
     
       <category term="Web" scheme="https://wasteland.touko.moe/categories/Web/"/>
     
-      <category term="Talk" scheme="https://wasteland.touko.moe/categories/Talk/"/>
-    
       <category term="Frontend" scheme="https://wasteland.touko.moe/categories/Web/Frontend/"/>
     
       <category term="Blog" scheme="https://wasteland.touko.moe/categories/Blog/"/>
+    
+      <category term="Talk" scheme="https://wasteland.touko.moe/categories/Talk/"/>
     
     
       <category term="Hexo" scheme="https://wasteland.touko.moe/tags/Hexo/"/>
