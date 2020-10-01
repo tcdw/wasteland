@@ -29,6 +29,7 @@ date: 2020-03-15 13:38:08
 - \_勤\_ - [https://博客.胡鼎原.中国/](https://博客.胡鼎原.中国/)
 - 快刀切草莓君 - http://zrawberry.com/
 - MinaMiGo - http://blog.minamigo.moe/
+- tcdw - https://www.tcdw.net/
 
 # Previous Links
 
@@ -38,7 +39,6 @@ date: 2020-03-15 13:38:08
 - Tsez's Blog - https://blog.tse.moe/
 - YOMTAAA - http://yomtaaa.github.io/
 - CDOG'S KENNEL - https://blog.cdog.me/
-- TCDW - https://www.tcdw.net/
 - 月色黄泉 - https://www.starduster.me/
 - 欣欣 - https://acgmiao.com/
 - 邓伟超 - https://juniperphoton.net/
